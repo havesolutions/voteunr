@@ -11,6 +11,7 @@ class Vote < ActiveRecord::Base
 
 	scoped_search :on => :name, :complete_value => :true 
 	scoped_search :on => :last_name, :complete_value => :true
+	scoped_search :on => :sr_no, :complete_value => :true
 	scoped_search :on => :middle_name, :complete_value => :true
 	scoped_search :on => :voters_id, :complete_value => :true
 	scoped_search :on => :age, :complete_value => :true
