@@ -1,4 +1,5 @@
 class Vote < ActiveRecord::Base
+	paginates_per 10
   attr_accessible :name, :last_name, :middle_name, :voters_id, :age, :sex, :panel_no
 
 #  scoped_search :on => :name, :complete_value => :true, :default_order => true

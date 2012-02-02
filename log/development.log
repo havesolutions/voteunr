@@ -2404,3 +2404,437 @@ Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02
 Rendered votes/_form.html.haml (4.2ms)
 Rendered votes/search.html.haml within layouts/search (49.2ms)
 Completed 200 OK in 66ms (Views: 52.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 23:41:15 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (21.3ms)
+Completed 200 OK in 25ms (Views: 24.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 23:41:18 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/new.html.haml within layouts/search (10.3ms)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:41:20 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (1.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=re" for 127.0.0.1 at 2012-02-02 23:41:20 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:41:20 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"re"}
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 200[0m
+Completed   in 123ms
+
+NameError (undefined local variable or method `order' for #<VotesController:0xa0a0668>):
+  app/controllers/votes_controller.rb:18:in `rescue in search'
+  app/controllers/votes_controller.rb:14:in `search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.9ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 23:41:51 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (34.1ms)
+Rendered votes/new.html.haml within layouts/search (41.5ms)
+Completed 200 OK in 45ms (Views: 44.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:41:53 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:41:54 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"re"}
+  [1m[35mVote Load (0.3ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 200
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY `votes`.`panel_no` ASC LIMIT 200[0m
+Completed   in 80ms
+
+NoMethodError (undefined method `page' for #<Array:0xa6d48cc>):
+  app/controllers/votes_controller.rb:18:in `rescue in search'
+  app/controllers/votes_controller.rb:14:in `search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.1ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.6ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:42:19 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 23:42:21 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.9ms)
+Rendered votes/new.html.haml within layouts/search (12.7ms)
+Completed 200 OK in 20ms (Views: 19.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:42:23 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=re" for 127.0.0.1 at 2012-02-02 23:42:23 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:42:24 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"re"}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[35mVote Load (31.7ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 5 OFFSET 0
+Rendered votes/search.html.haml within layouts/search (56.6ms)
+Rendered votes/_form.html.haml (3.7ms)
+  [1m[36mVote Load (26.9ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY `votes`.`panel_no` ASC LIMIT 5 OFFSET 0[0m
+Rendered votes/search.html.haml within layouts/search (40.5ms)
+Completed   in 118ms
+
+ActionView::Template::Error (undefined method `current_page' for nil:NilClass):
+    16:       %td{:align => "center"}= h record.sex.present? ? record.sex : '-'
+    17:       %td{:align => "center"}= h record.age.present? ? record.age : '-'
+    18: = paginate @users
+    19: %br/
+  app/views/votes/search.html.haml:19:in `_app_views_votes_search_html_haml__420555338_83616680_998494976'
+  app/controllers/votes_controller.rb:19:in `rescue in search'
+  app/controllers/votes_controller.rb:14:in `search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (9.8ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.1ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:44:59 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 23:45:00 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (4.1ms)
+Rendered votes/new.html.haml within layouts/search (10.5ms)
+Completed 200 OK in 14ms (Views: 13.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:45:02 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=re" for 127.0.0.1 at 2012-02-02 23:45:03 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:45:04 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"re"}
+Rendered votes/_form.html.haml (4.4ms)
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 5 OFFSET 0[0m
+Rendered votes/search.html.haml within layouts/search (52.3ms)
+Rendered votes/_form.html.haml (3.7ms)
+  [1m[35mVote Load (0.2ms)[0m  SELECT `votes`.* FROM `votes` ORDER BY `votes`.`panel_no` ASC LIMIT 5 OFFSET 0
+Rendered votes/search.html.haml within layouts/search (12.7ms)
+Completed   in 170ms
+
+ActionView::Template::Error (undefined method `current_page' for nil:NilClass):
+    16:       %td{:align => "center"}= h record.sex.present? ? record.sex : '-'
+    17:       %td{:align => "center"}= h record.age.present? ? record.age : '-'
+    18: = paginate @users
+    19: %br/
+  app/views/votes/search.html.haml:19:in `_app_views_votes_search_html_haml___905752633_87780890__833858300'
+  app/controllers/votes_controller.rb:19:in `rescue in search'
+  app/controllers/votes_controller.rb:14:in `search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.9ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.8ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 23:46:08 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (5.8ms)
+Rendered votes/new.html.haml within layouts/search (13.7ms)
+Completed 200 OK in 19ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:46:10 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=re" for 127.0.0.1 at 2012-02-02 23:46:10 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (1.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:46:10 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"re"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 5 OFFSET 0[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___905752633_82314870__833858300 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (54.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%')
+Rendered votes/search.html.haml within layouts/search (210.2ms)
+Completed 200 OK in 224ms (Views: 158.5ms | ActiveRecord: 54.6ms)
+
+
+Started GET "/votes/search?page=2&search=re&utf8=%E2%9C%93" for 127.0.0.1 at 2012-02-02 23:46:28 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"page"=>"2", "search"=>"re", "utf8"=>"✓"}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[36mVote Load (27.6ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 5 OFFSET 5[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___905752633_86006370__833858300 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%')
+Rendered votes/search.html.haml within layouts/search (96.9ms)
+Completed 200 OK in 110ms (Views: 72.3ms | ActiveRecord: 27.8ms)
+
+
+Started GET "/votes/search?page=3&search=re&utf8=%E2%9C%93" for 127.0.0.1 at 2012-02-02 23:46:31 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"page"=>"3", "search"=>"re", "utf8"=>"✓"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[36mVote Load (31.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 5 OFFSET 10[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___905752633_86048720__833858300 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%')
+Rendered votes/search.html.haml within layouts/search (112.1ms)
+Completed 200 OK in 125ms (Views: 83.4ms | ActiveRecord: 31.5ms)
+
+
+Started GET "/votes/search?page=4&search=re&utf8=%E2%9C%93" for 127.0.0.1 at 2012-02-02 23:46:34 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"page"=>"4", "search"=>"re", "utf8"=>"✓"}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[36mVote Load (19.6ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 5 OFFSET 15[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___905752633_85795220__833858300 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%')
+Rendered votes/search.html.haml within layouts/search (97.4ms)
+Completed 200 OK in 110ms (Views: 80.5ms | ActiveRecord: 19.7ms)
+
+
+Started GET "/votes/search?search=re&utf8=%E2%9C%93" for 127.0.0.1 at 2012-02-02 23:46:37 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"search"=>"re", "utf8"=>"✓"}
+Rendered votes/_form.html.haml (4.2ms)
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 5 OFFSET 0[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___905752633_85381380__833858300 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%')
+Rendered votes/search.html.haml within layouts/search (54.2ms)
+Completed 200 OK in 67ms (Views: 56.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/votes/auto_complete_search?search=manish" for 127.0.0.1 at 2012-02-02 23:46:43 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=manish" for 127.0.0.1 at 2012-02-02 23:46:43 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"manish"}
+Rendered votes/_form.html.haml (4.0ms)
+  [1m[36mVote Load (22.9ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%') ORDER BY `votes`.`panel_no` ASC LIMIT 5 OFFSET 0[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___905752633_84490790__833858300 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (19.7ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%')
+Rendered votes/search.html.haml within layouts/search (139.8ms)
+Completed 200 OK in 156ms (Views: 102.4ms | ActiveRecord: 42.6ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=manish" for 127.0.0.1 at 2012-02-02 23:47:09 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"manish"}
+Rendered votes/_form.html.haml (4.2ms)
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%') ORDER BY `votes`.`panel_no` ASC LIMIT 5 OFFSET 0[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___725932480_83637680__134264733 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%')
+Rendered votes/search.html.haml within layouts/search (147.4ms)
+Completed 200 OK in 248ms (Views: 150.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=manish" for 127.0.0.1 at 2012-02-02 23:47:18 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"manish"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[36mVote Load (27.0ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%') ORDER BY `votes`.`panel_no` ASC LIMIT 10 OFFSET 0[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___725932480_85562110__134264733 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%')
+Rendered votes/search.html.haml within layouts/search (87.0ms)
+Completed 200 OK in 126ms (Views: 62.7ms | ActiveRecord: 27.2ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=manish" for 127.0.0.1 at 2012-02-02 23:47:35 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"manish"}
+Rendered votes/_form.html.haml (4.1ms)
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%') ORDER BY `votes`.`panel_no` ASC LIMIT 10 OFFSET 0[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___725932480_85491610__134264733 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%')
+Rendered votes/search.html.haml within layouts/search (58.8ms)
+Completed 200 OK in 102ms (Views: 61.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=manish" for 127.0.0.1 at 2012-02-02 23:47:43 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"manish"}
+Rendered votes/_form.html.haml (4.2ms)
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%') ORDER BY `votes`.`panel_no` ASC LIMIT 10 OFFSET 0[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___725932480_84983240__134264733 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%')
+Rendered votes/search.html.haml within layouts/search (56.2ms)
+Completed 200 OK in 70ms (Views: 59.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/votes/search?page=2&search=manish&utf8=%E2%9C%93" for 127.0.0.1 at 2012-02-02 23:47:53 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"page"=>"2", "search"=>"manish", "utf8"=>"✓"}
+Rendered votes/_form.html.haml (4.1ms)
+  [1m[36mVote Load (27.7ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%') ORDER BY `votes`.`panel_no` ASC LIMIT 10 OFFSET 10[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___725932480_84478010__134264733 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%')
+Rendered votes/search.html.haml within layouts/search (99.2ms)
+Completed 200 OK in 113ms (Views: 74.5ms | ActiveRecord: 27.8ms)
+
+
+Started GET "/votes/search?search=manish&utf8=%E2%9C%93" for 127.0.0.1 at 2012-02-02 23:47:55 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"search"=>"manish", "utf8"=>"✓"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%') ORDER BY `votes`.`panel_no` ASC LIMIT 10 OFFSET 0[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___725932480_84013170__134264733 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%')
+Rendered votes/search.html.haml within layouts/search (55.4ms)
+Completed 200 OK in 71ms (Views: 58.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/votes/search?search=manish&utf8=%E2%9C%93" for 127.0.0.1 at 2012-02-02 23:48:14 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"search"=>"manish", "utf8"=>"✓"}
+Rendered votes/_form.html.haml (4.4ms)
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%') ORDER BY `votes`.`panel_no` ASC LIMIT 10 OFFSET 0[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___725932480_83977370__134264733 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%manish%' OR `votes`.`last_name` LIKE '%manish%' OR `votes`.`middle_name` LIKE '%manish%' OR `votes`.`voters_id` LIKE '%manish%' OR `votes`.`sex` LIKE '%manish%')
+Rendered votes/search.html.haml within layouts/search (55.5ms)
+Completed 200 OK in 70ms (Views: 58.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/votes/auto_complete_search?search=r" for 127.0.0.1 at 2012-02-02 23:48:31 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=ra" for 127.0.0.1 at 2012-02-02 23:48:31 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=ragh" for 127.0.0.1 at 2012-02-02 23:48:32 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 23:48:33 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 23:48:33 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[36mVote Load (22.8ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%raghu%' OR `votes`.`last_name` LIKE '%raghu%' OR `votes`.`middle_name` LIKE '%raghu%' OR `votes`.`voters_id` LIKE '%raghu%' OR `votes`.`sex` LIKE '%raghu%') ORDER BY `votes`.`panel_no` ASC LIMIT 10 OFFSET 0[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___725932480_81607880__134264733 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (17.8ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%raghu%' OR `votes`.`last_name` LIKE '%raghu%' OR `votes`.`middle_name` LIKE '%raghu%' OR `votes`.`voters_id` LIKE '%raghu%' OR `votes`.`sex` LIKE '%raghu%')
+Rendered votes/search.html.haml within layouts/search (85.5ms)
+Completed 200 OK in 102ms (Views: 49.4ms | ActiveRecord: 40.6ms)
+
+
+Started GET "/votes/auto_complete_search?search=re" for 127.0.0.1 at 2012-02-02 23:48:41 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:48:41 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"re"}
+Rendered votes/_form.html.haml (4.4ms)
+  [1m[36mVote Load (25.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 10 OFFSET 0[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___725932480_80989380__134264733 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (0.2ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%')
+Rendered votes/search.html.haml within layouts/search (124.4ms)
+Completed 200 OK in 138ms (Views: 101.8ms | ActiveRecord: 25.5ms)
+
+
+Started GET "/votes/search?page=165&search=re&utf8=%E2%9C%93" for 127.0.0.1 at 2012-02-02 23:48:47 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"page"=>"165", "search"=>"re", "utf8"=>"✓"}
+Rendered votes/_form.html.haml (3.7ms)
+  [1m[36mVote Load (31.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 10 OFFSET 1640[0m
+DEPRECATION WARNING: reorder is deprecated. Please use except(:order).order(...) instead. (called from _app_views_votes_search_html_haml___725932480_81048660__134264733 at /home/dinesh/election/demo/scoped_search_demo_app/app/views/votes/search.html.haml:19)
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%')
+Rendered votes/search.html.haml within layouts/search (119.3ms)
+Completed 200 OK in 132ms (Views: 90.6ms | ActiveRecord: 31.5ms)

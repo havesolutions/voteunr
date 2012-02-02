@@ -10,6 +10,7 @@ gem 'haml', '3.1.4'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql'
+gem 'kaminari'
 
 # Use unicorn as the web server
 # gem 'unicorn'

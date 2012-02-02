@@ -11,11 +11,11 @@ class VotesController < ApplicationController
 	end
 
 	def search
-		@records = Vote.search_for(params[:search], :order => 'panel_no').all(:limit => 200)
+		@records = Vote.search_for(params[:search], :order => 'panel_no').page params[:page]
 		render :layout => "search"
   rescue => e
     flash[:error] = e.to_s
-    @records= Vote.search_for('', order => 'panel_no').all(:limit => 200)
+    @records= Vote.search_for('', :order => 'panel_no').page params[:page]
 		render :layout => "search"
 	end
 

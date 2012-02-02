@@ -1,7 +1,7 @@
 = render :partial => 'form'
 %br/
 
-%table{:border => 2, :align => "center", :width => "500", :height => "300",:style=> "overflow:scroll;"}
+%table{:border => 2, :align => "center", :width => "500", :height => "200",:style=> "overflow:scroll;"}
   %tr
     - Vote::ColumnNames.each do |column|
       %th=column
@@ -9,11 +9,12 @@
     %tr
       %td{:align => "center"}= h record.panel_no.present? ? record.panel_no : '-'
       %td{:style => "color:#0066FF; font-weight:bold"}= h record.sr_no.present? ? record.sr_no : '-'
-      %td{:align => "center"}= h record.name.present? ? record.name : ''
-      %td{:align => "center"}= h record.middle_name.present? ? record.middle_name : ''
+      %td{:align => "center"}= h record.name.present? ? record.name : '-'
+      %td{:align => "center"}= h record.middle_name.present? ? record.middle_name : '-'
       %td{:align => "center"}= h record.last_name.present? ? record.last_name : '-'
       %td{:align => "center"}= h record.voters_id.present? ? record.voters_id : '-'
       %td{:align => "center"}= h record.sex.present? ? record.sex : '-'
       %td{:align => "center"}= h record.age.present? ? record.age : '-'
+= paginate @records
 %br/
 
