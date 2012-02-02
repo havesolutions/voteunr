@@ -1,0 +1,131 @@
+!!!
+%html
+  %head
+    %title Election
+    = stylesheet_link_tag    "application", "default.css", 'jquery-ui.css'
+    = javascript_include_tag "application", "jquery.js", "jquery-ui.js"
+  %body
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}"
+    = content_tag :h1, yield(:title) if show_title?
+    #container
+      #rightside
+        #title
+          %p
+        /
+          <div id="sidebar">
+          <ul class="nav">
+          <!--<li><a href="#">home page</a></li>
+          <li><a href="#">cool links</a></li>
+          <li><a href="#">my artwork</a></li>
+          <li><a href="#">calendar</a></li>
+          <li><a href="#">contact me</a></li>
+          </ul>
+          <img src="img/star2.jpg" alt="star" style="display:none"/>
+          <!--		<h1>recent updates</h1>
+          <h3>last updated: 10/31/06</h3>
+          
+          <ul id="gallery">
+          <li><a href="#"><b>First news item</b><br /><span class="spacer">&nbsp;</span><br />
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <i>Read More...</i></span></a></li>
+          <li><a href="#"><b>October surprise</b><br /><span class="spacer">&nbsp;</span><br />
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <i>Read More...</i></span></a></li>
+          <li><a href="#"><b>don't forget to vote</b><br /><span class="spacer">&nbsp;</span><br />
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <i>Read More...</i></span></a></li>
+          <li><a href="#"><b>hover news rocks!</b><br /><span class="spacer">&nbsp;</span><br />
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <i>Read More...</i></span></a></li>
+          <li><a href="#"><b>OWD gets an update</b><br /><span class="spacer">&nbsp;</span><br />
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <i>Read More...</i></span></a></li>
+          <li><a href="#"><b>use as link list</b><br /><span class="spacer">&nbsp;</span><br />
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <i>Read More...</i></span></a></li>
+          <li><a href="#"><b>Taking names</b><br /><span class="spacer">&nbsp;</span><br />
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <i>Read More...</i></span></a></li>
+          <li><a href="#"><b>keep it under 8 items</b><br /><span class="spacer">&nbsp;</span><br />
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <i>Read More...</i></span></a></li>
+          
+          </ul>
+          
+          <!--<h1>side item</h1>
+          <h3>a note, form, or ad</h3>
+          <p>This template is valid <a href="http://validator.w3.org/check?uri=referer">XHTML</a> 1.0 Strict and the <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> file validates as well. It has been released under the Creative Commons Attribution v2.5 license. If you use this template, please keep a link to me on the site. Thank you.</p>
+          </div>
+      #content
+        /
+          <h1>welcome to my blog</h1>
+          <h3>by michael on october 31, 2006</h3>
+          <p>This template was inspired by some artist friends of mine and I hope you find it useful. You can replace the title to the left by changing the text in the HTML or by using a bitmap <a href="http://adobe.com">graphics application</a> to modify the background graphic and add your own styled text.</p>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh. Vivamus viverra. Nullam turpis. Vestibulum sed etiam. Euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+          <div class="blogfoot"><span class="foot_top">Filed under: <a href="#">Templates</a>, <a href="#">Technology</a>, <a href="#">Latin</a>, <a href="#">Web-design</a></span><br /><span class="foot_bottom"><a href="#">permalink</a> | <a href="#">comments</a></span></div>
+          
+          <h1>bold and em styles</h1>
+          <h3>by michael on october 26, 2006</h3>
+          <p><img src="img/skate.jpg" alt="Skater" class="l_blog" />If you need to make more room for the blog titles and keep them on one line, simply adjust the size of the #content H1 style. Bold text looks <b>like this</b>. It's 'Arial Black' and #FFF just like the title and the headers, however, if the person viewing the site removed 'Arial Black' then the font-weight:600 property will take care of bolding it as much as possible.</p>
+          <p>Emphesized or italisized text looks <em>like this</em>. I don't think the look of Arial's italics stands out, so I usually swap it out with Georgia.</p>
+          <div class="blogfoot"><span class="foot_top">Filed under: <a href="#">Templates</a>, <a href="#">Technology</a>, <a href="#">Latin</a>, <a href="#">Web-design</a></span><br /><span class="foot_bottom"><a href="#">permalink</a> | <a href="#">comments</a></span></div>
+          
+          <h1>hover news &amp; quotes</h1>
+          <h3>by michael on october 18, 2006</h3>
+          <p><a href="#"><img src="img/skate.jpg" alt="Skater" class="r_blog" /></a>Right under the navigation menu to the right you will see a heading called Recent Updates. If you hover over the news items a short summary will pop up and allow you to click to get to another page. You can use this as a link list giving people a short description of what your link is about. I learned the technique from Stu at <a href="http://www.cssplay.co.uk/">CSS Play</a>. The original demo was to display a small photo gallery this way but I adapted it for text.</p>
+          <blockquote><p>This is what quoted text looks like. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></blockquote>
+          
+          <div class="blogfoot"><span class="foot_top">Filed under: <a href="#">Templates</a>, <a href="#">Technology</a>, <a href="#">Latin</a>, <a href="#">Web-design</a></span><br /><span class="foot_bottom"><a href="#">permalink</a> | <a href="#">comments</a></span></div>
+        %h1 SEARCH YOUR VOTE
+        %h3
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Promise yourself to vote this 16th feb. &nbsp;&nbsp;
+        %p
+          = yield
+          %br/
+        %p
+          %br/
+        %p
+          %br/
+        %p
+          %br/
+        %p
+          %br/
+        %p
+          %br/
+        %p
+          %br/
+        %p
+          %br/
+        .blogfoot
+          %span.foot_top
+            %a{:href => "#"}
+            %a{:href => "#"}
+            %a{:href => "#"}
+            %a{:href => "#"}
+          %br/
+          %span.foot_bottom
+            %a{:href => "#"}
+            %a{:href => "#"}
+      #footer
+        /
+          <div class="footer_links">
+          <ul>
+          <li class="top_link">my links</li>
+          <li><a href="#">digg.com</a></li>
+          <li><a href="#">Slashdot</a></li>
+          <li><a href="#">wikipedia</a></li>
+          <li><a href="#">Open Web Design</a></li>
+          <li><a href="#">topleft pixel</a></li>
+          <li><a href="#">Apple</a></li>
+          </ul>
+          <ul>
+          <li class="top_link">web design</li>
+          <li><a href="#">CSS Play</a></li>
+          <li><a href="#">Squidfingers</a></li>
+          <li><a href="#">Kaliber 10K</a></li>
+          <li><a href="#">Photoshop Star</a></li>
+          <li><a href="#">A List Apart</a></li>
+          <li><a href="#">Fractured Sanity</a></li>
+          </ul>
+          </div>
+        .ie_foot
+          %p
+            %span.rf_item
+            %span.rf_item
+              %a{:href => "http://validator.w3.org/check?uri=referer"}
+            %span.rf_item
+              %a{:href => "http://jigsaw.w3.org/css-validator/check/referer"}
+            %span.rf_item

@@ -1,0 +1,11 @@
+%html
+  %head
+    %title Election
+    = stylesheet_link_tag "search.css", 'jquery-ui.css'
+    = javascript_include_tag "application", "jquery.js", "jquery-ui.js"
+  %body
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}"
+    = content_tag :h1, yield(:title) if show_title?
+    = yield
+

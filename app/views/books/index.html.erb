@@ -1,0 +1,27 @@
+<% title "Books" %>
+
+<div id="books_search">
+  <%= form_tag books_path, :method => :get do %>
+    <%= auto_complete_field_tag_jquery(:search, params[:search], {:placeholder => "Type Space For Search Options"}) %>
+    <button id='submit_search' style="font-size: 12px;">Search</button>
+  <% end -%>
+</div>
+
+
+<table>
+  <tr>
+    <th><%= sort :name %></th>
+    <th><%= sort :"author.last", :as => "Author" %></th>
+  </tr>
+  <% for book in @books %>
+    <tr>
+      <td><%= book.name %></td>
+      <td><%= book.author %></td>
+      <td><%= link_to "Show", book %></td>
+      <td><%= link_to "Edit", edit_book_path(book) %></td>
+      <td><%= link_to "Destroy", book, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Book", new_book_path %></p>

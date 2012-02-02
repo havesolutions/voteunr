@@ -1,0 +1,2406 @@
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (238.3ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (268.7ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateBooks (20110710182758)
+  [1m[35mSQL (118.8ms)[0m  CREATE TABLE `books` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `author_id` int(11), `description` text, `price` int(11), `published_at` datetime, `in_stock` tinyint(1), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (141.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110710182758')[0m
+Migrating to CreateAuthors (20110710182932)
+  [1m[35mSQL (96.9ms)[0m  CREATE TABLE `authors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `first_name` varchar(255), `last_name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (32.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110710182932')[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `authors`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `authors`
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `books`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `books`
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:25:30 +0530
+  Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT `books`.* FROM `books` ORDER BY `books`.`name` ASC[0m
+Rendered books/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 115ms (Views: 9.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/books/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 20:25:32 +0530
+  Processing by BooksController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 12ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2012-02-02 20:25:35 +0530
+  Processing by BooksController#new as HTML
+  [1m[35mAuthor Load (43.9ms)[0m  SELECT `authors`.* FROM `authors` ORDER BY LOWER(authors.last_name)
+Rendered books/_form.html.erb (188.4ms)
+Rendered books/new.html.erb within layouts/application (192.8ms)
+Completed 200 OK in 208ms (Views: 153.1ms | ActiveRecord: 43.9ms)
+
+
+Started POST "/books" for 127.0.0.1 at 2012-02-02 20:25:42 +0530
+  Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YbUvNSCoBvYJeTnlPuC7kQhPmlaZijHDqb+98IFawWE=", "book"=>{"name"=>"ttt", "description"=>"tttt", "price"=>"", "published_at(1i)"=>"2012", "published_at(2i)"=>"2", "published_at(3i)"=>"2", "published_at(4i)"=>"14", "published_at(5i)"=>"55", "in_stock"=>"0"}, "commit"=>"Create Book"}
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `books`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `books` (`name`, `author_id`, `description`, `price`, `published_at`, `in_stock`, `created_at`, `updated_at`) VALUES ('ttt', NULL, 'tttt', NULL, '2012-02-02 14:55:00', 0, '2012-02-02 14:55:43', '2012-02-02 14:55:43')
+  [1m[36mSQL (57.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/books/1
+Completed 302 Found in 97ms
+
+
+Started GET "/books/1" for 127.0.0.1 at 2012-02-02 20:25:43 +0530
+  Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBook Load (0.5ms)[0m  SELECT `books`.* FROM `books` WHERE `books`.`id` = 1 LIMIT 1
+Rendered books/show.html.erb within layouts/application (42.7ms)
+Completed 200 OK in 62ms (Views: 49.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books" for 127.0.0.1 at 2012-02-02 20:25:47 +0530
+  Processing by BooksController#index as HTML
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT `books`.* FROM `books` ORDER BY `books`.`name` ASC[0m
+Rendered books/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 39ms (Views: 10.5ms | ActiveRecord: 59.4ms)
+
+
+Started GET "/books/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 20:25:49 +0530
+  Processing by BooksController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 12ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/books/auto_complete_search?search=tt" for 127.0.0.1 at 2012-02-02 20:25:50 +0530
+  Processing by BooksController#auto_complete_search as JSON
+  Parameters: {"search"=>"tt"}
+Completed 200 OK in 30ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/books?utf8=%E2%9C%93&search=tt" for 127.0.0.1 at 2012-02-02 20:25:50 +0530
+  Processing by BooksController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"tt"}
+  [1m[35mBook Load (0.8ms)[0m  SELECT `books`.`id` AS t0_r0, `books`.`name` AS t0_r1, `books`.`author_id` AS t0_r2, `books`.`description` AS t0_r3, `books`.`price` AS t0_r4, `books`.`published_at` AS t0_r5, `books`.`in_stock` AS t0_r6, `books`.`created_at` AS t0_r7, `books`.`updated_at` AS t0_r8, `authors`.`id` AS t1_r0, `authors`.`first_name` AS t1_r1, `authors`.`last_name` AS t1_r2, `authors`.`created_at` AS t1_r3, `authors`.`updated_at` AS t1_r4 FROM `books` LEFT OUTER JOIN `authors` ON `authors`.`id` = `books`.`author_id` WHERE (`books`.`name` LIKE '%tt%' OR `books`.`description` LIKE '%tt%' OR `authors`.`last_name` LIKE '%tt%' OR `authors`.`first_name` LIKE '%tt%') ORDER BY `books`.`name` ASC
+Rendered books/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 81ms (Views: 13.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:38:32 +0530
+  Processing by VotesController#index as HTML
+Completed   in 26ms
+
+ActionView::MissingTemplate (Missing template votes/index with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/home/dinesh/election/demo/scoped_search_demo_app/app/views"):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:41:33 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml (7.9ms)
+Completed   in 10ms
+
+ActionView::Template::Error (undefined local variable or method `new_election_path' for #<#<Class:0xa303608>:0xa3022bc>):
+    1: = link_to image_tag("search.jpg", :border=>0), new_election_path, :id => "search_button"
+  app/views/votes/index.html.haml:1:in `_app_views_votes_index_html_haml___656806873_85460890__77902123'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.7ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:42:35 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml (1.9ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/images/search.jpg" for 127.0.0.1 at 2012-02-02 20:42:35 +0530
+
+ActionController::RoutingError (No route matches "/images/search.jpg"):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:44:39 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml (1.9ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/images/search.jpg" for 127.0.0.1 at 2012-02-02 20:44:39 +0530
+
+ActionController::RoutingError (No route matches "/images/search.jpg"):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:44:40 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml (2.0ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/images/search.jpg" for 127.0.0.1 at 2012-02-02 20:44:40 +0530
+
+ActionController::RoutingError (No route matches "/images/search.jpg"):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:44:40 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml (2.5ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/images/search.jpg" for 127.0.0.1 at 2012-02-02 20:44:40 +0530
+
+ActionController::RoutingError (No route matches "/images/search.jpg"):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:44:40 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml (2.0ms)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/images/search.jpg" for 127.0.0.1 at 2012-02-02 20:44:40 +0530
+
+ActionController::RoutingError (No route matches "/images/search.jpg"):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:44:55 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml (2.0ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/images/search.jpg" for 127.0.0.1 at 2012-02-02 20:44:55 +0530
+
+ActionController::RoutingError (No route matches "/images/search.jpg"):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:46:20 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml (1.9ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/images/search.jpg" for 127.0.0.1 at 2012-02-02 20:46:20 +0530
+
+ActionController::RoutingError (No route matches "/images/search.jpg"):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:47:42 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml (1.8ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:48:22 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml (2.0ms)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:48:23 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml (1.8ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:48:23 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml (1.9ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:48:23 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml (1.9ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 20:49:22 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (21.5ms)
+Completed 200 OK in 25ms (Views: 24.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 20:49:24 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/new.html.haml within layouts/search (10.5ms)
+Completed 200 OK in 14ms (Views: 13.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 20:49:32 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ra" for 127.0.0.1 at 2012-02-02 20:49:39 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ra"}
+Completed   in 14ms
+
+NoMethodError (undefined method `type' for nil:NilClass):
+  app/controllers/votes_controller.rb:32:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.7ms)
+
+
+Started GET "/votes/auto_complete_search?search=rag" for 127.0.0.1 at 2012-02-02 20:49:40 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"rag"}
+Completed   in 9ms
+
+NoMethodError (undefined method `type' for nil:NilClass):
+  app/controllers/votes_controller.rb:32:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.9ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.3ms)
+
+
+Started GET "/votes/auto_complete_search?search=ragh" for 127.0.0.1 at 2012-02-02 20:49:41 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ragh"}
+Completed   in 9ms
+
+NoMethodError (undefined method `type' for nil:NilClass):
+  app/controllers/votes_controller.rb:32:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.9ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.4ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ragh" for 127.0.0.1 at 2012-02-02 20:49:44 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ragh"}
+Completed   in 10ms
+
+NoMethodError (undefined method `type' for nil:NilClass):
+  app/controllers/votes_controller.rb:22:in `search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.5ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.1ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 20:51:45 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (4.3ms)
+Rendered votes/new.html.haml within layouts/search (10.9ms)
+Completed 200 OK in 14ms (Views: 13.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 20:51:47 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=rag" for 127.0.0.1 at 2012-02-02 20:51:50 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"rag"}
+Completed   in 40ms
+
+NoMethodError (undefined method `type' for nil:NilClass):
+  app/controllers/votes_controller.rb:36:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.2ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 20:51:51 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"raghu"}
+Completed   in 8ms
+
+NoMethodError (undefined method `type' for nil:NilClass):
+  app/controllers/votes_controller.rb:36:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.9ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.2ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 20:51:51 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (5.7ms)
+Rendered votes/search.html.haml within layouts/search (40.0ms)
+Completed   in 169ms
+
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::Election):
+    3: 
+    4: %table{:border => 2, :bordercolor => "#FDF4D5", :align => "center", :width => "500"}
+    5:   %tr
+    6:     - Election::ColumnNames.each do |column|
+    7:       %th=column
+    8:   - if false
+    9:     - @records.each do |subject|
+  app/views/votes/search.html.haml:6:in `_app_views_votes_search_html_haml___100878133_79056980__1019765426'
+  app/controllers/votes_controller.rb:31:in `rescue in search'
+  app/controllers/votes_controller.rb:22:in `search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  [1m[36mVote Load (90.7ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY `votes`.`name` ASC[0m
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1676.9ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (1692.8ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 20:53:45 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (4.0ms)
+Rendered votes/search.html.haml within layouts/search (13.8ms)
+Completed 200 OK in 27ms (Views: 16.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 20:53:49 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 20:53:51 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/new.html.haml within layouts/search (10.2ms)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 20:53:51 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 20:53:53 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=r" for 127.0.0.1 at 2012-02-02 20:53:54 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"r"}
+Completed   in 10ms
+
+NoMethodError (undefined method `type' for nil:NilClass):
+  app/controllers/votes_controller.rb:36:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.5ms)
+
+
+Started GET "/votes/auto_complete_search?search=ra" for 127.0.0.1 at 2012-02-02 20:53:54 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ra"}
+Completed   in 9ms
+
+NoMethodError (undefined method `type' for nil:NilClass):
+  app/controllers/votes_controller.rb:36:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.7ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ragh" for 127.0.0.1 at 2012-02-02 20:53:55 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ragh"}
+Completed   in 8ms
+
+NoMethodError (undefined method `type' for nil:NilClass):
+  app/controllers/votes_controller.rb:36:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (53.1ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (63.6ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 20:53:55 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"raghu"}
+Completed   in 9ms
+
+NoMethodError (undefined method `type' for nil:NilClass):
+  app/controllers/votes_controller.rb:36:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.8ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.2ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 20:53:57 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/search.html.haml within layouts/search (13.6ms)
+Completed 200 OK in 26ms (Views: 16.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 20:57:37 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 20:57:41 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.7ms)
+Rendered votes/new.html.haml within layouts/search (10.5ms)
+Completed 200 OK in 16ms (Views: 15.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 20:57:41 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 48ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 20:57:44 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=rag" for 127.0.0.1 at 2012-02-02 20:57:46 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"rag"}
+Completed   in 14ms
+
+NoMethodError (undefined method `type' for nil:NilClass):
+  app/controllers/votes_controller.rb:36:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (26.4ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (34.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=ragh" for 127.0.0.1 at 2012-02-02 20:57:46 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ragh"}
+Completed   in 9ms
+
+NoMethodError (undefined method `type' for nil:NilClass):
+  app/controllers/votes_controller.rb:36:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.8ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.4ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 20:57:46 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"raghu"}
+Completed   in 9ms
+
+NoMethodError (undefined method `type' for nil:NilClass):
+  app/controllers/votes_controller.rb:36:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (29.7ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (35.5ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 20:57:48 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/search.html.haml within layouts/search (13.8ms)
+Completed 200 OK in 114ms (Views: 16.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 21:00:04 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (31.2ms)
+Rendered votes/search.html.haml within layouts/search (41.6ms)
+Completed 200 OK in 54ms (Views: 44.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 21:00:37 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (4.0ms)
+  [1m[36mVote Load (94.7ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY `votes`.`name` ASC[0m
+Rendered votes/search.html.haml within layouts/search (348.5ms)
+Completed   in 361ms
+
+ActionView::Template::Error (undefined method `code' for #<Vote:0xc104abc>):
+    7:       %th=column
+    8:   - @records.each do |subject|
+    9:     %tr
+    10:       %td{:align => "center"}= h subject.code
+    11:       %td{:style => "color:#0066FF; font-weight:bold"}= h subject.name
+    12:       %td{:align => "center"}= h Mark.find_marks(subject.id, @student.id).first.marks
+    13:       %td{:align => "center"}= h Mark.find_marks(subject.id, @student.id).first.rank
+  app/views/votes/search.html.haml:10:in `block in _app_views_votes_search_html_haml__922889457_89700810__859012014'
+  app/views/votes/search.html.haml:9:in `_app_views_votes_search_html_haml__922889457_89700810__859012014'
+  app/controllers/votes_controller.rb:31:in `rescue in search'
+  app/controllers/votes_controller.rb:22:in `search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1481.8ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (1526.5ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 21:02:20 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[35mVote Load (95.6ms)[0m  SELECT `votes`.* FROM `votes` ORDER BY `votes`.`name` ASC
+Rendered votes/search.html.haml within layouts/search (310.6ms)
+Completed   in 323ms
+
+ActionView::Template::Error (undefined method `name' for #<Vote:0xc5da2a8>):
+    7:       %th=column
+    8:   - @records.each do |subject|
+    9:     %tr
+    10:       %td{:align => "center"}= h subject.name
+    11:       %td{:style => "color:#0066FF; font-weight:bold"}= h subject.last_name
+    12:       %td{:align => "center"}= h subject.middle_name
+    13:       %td{:align => "center"}= h subject.age
+  app/views/votes/search.html.haml:10:in `block in _app_views_votes_search_html_haml__922889457_107062260__859012014'
+  app/views/votes/search.html.haml:9:in `_app_views_votes_search_html_haml__922889457_107062260__859012014'
+  app/controllers/votes_controller.rb:31:in `rescue in search'
+  app/controllers/votes_controller.rb:22:in `search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1452.9ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (1465.8ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 21:02:53 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (4.0ms)
+  [1m[36mVote Load (94.4ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY `votes`.`name` ASC[0m
+Rendered votes/search.html.haml within layouts/search (332.6ms)
+Completed   in 346ms
+
+ActionView::Template::Error (undefined method `age' for #<Vote:0xcc71c24>):
+    7:       %th=column
+    8:   - @records.each do |subject|
+    9:     %tr
+    10:       %td{:align => "center"}= h subject.age
+    11:       %td{:style => "color:#0066FF; font-weight:bold"}= h subject.last_name
+    12:       %td{:align => "center"}= h subject.middle_name
+    13:       %td{:align => "center"}= h subject.age
+  app/views/votes/search.html.haml:10:in `block in _app_views_votes_search_html_haml__922889457_103708900__859012014'
+  app/views/votes/search.html.haml:9:in `_app_views_votes_search_html_haml__922889457_103708900__859012014'
+  app/controllers/votes_controller.rb:31:in `rescue in search'
+  app/controllers/votes_controller.rb:22:in `search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1532.1ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (1545.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 21:03:13 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/search.html.haml within layouts/search (1.3ms)
+Completed   in 14ms
+
+ActionView::Template::Error (Inconsistent indentation: 2 tabs were used for indentation, but the rest of the document was indented using 2 spaces.):
+    6:     - Vote::ColumnNames.each do |column|
+    7:       %th=column
+    8:   - @records.each do |subject|
+    9: 		- puts subject.inspect
+    10:     %tr
+    11:       %td{:align => "center"}= h subject.age
+    12:       %td{:style => "color:#0066FF; font-weight:bold"}= h subject.last_name
+  app/views/votes/search.html.haml:9
+  app/controllers/votes_controller.rb:31:in `rescue in search'
+  app/controllers/votes_controller.rb:22:in `search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  [1m[35mVote Load (105.8ms)[0m  SELECT `votes`.* FROM `votes` ORDER BY `votes`.`name` ASC
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1674.1ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (1723.7ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 21:03:31 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (4.1ms)
+  [1m[36mVote Load (100.0ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY `votes`.`name` ASC[0m
+Rendered votes/search.html.haml within layouts/search (351.7ms)
+Completed   in 365ms
+
+ActionView::Template::Error (undefined method `age' for #<Vote:0xbd8f06c>):
+    8:   - @records.each do |subject|
+    9:     - puts subject.inspect
+    10:     %tr
+    11:       %td{:align => "center"}= h subject.age
+    12:       %td{:style => "color:#0066FF; font-weight:bold"}= h subject.last_name
+    13:       %td{:align => "center"}= h subject.middle_name
+    14:       %td{:align => "center"}= h subject.age
+  app/views/votes/search.html.haml:11:in `block in _app_views_votes_search_html_haml__922889457_107310370__859012014'
+  app/views/votes/search.html.haml:9:in `_app_views_votes_search_html_haml__922889457_107310370__859012014'
+  app/controllers/votes_controller.rb:31:in `rescue in search'
+  app/controllers/votes_controller.rb:22:in `search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1455.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (1504.3ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 21:03:58 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (4.0ms)
+  [1m[35mVote Load (102.7ms)[0m  SELECT `votes`.* FROM `votes` ORDER BY `votes`.`name` ASC
+Rendered votes/search.html.haml within layouts/search (328.1ms)
+Completed   in 344ms
+
+ActionView::Template::Error (undefined method `last_name' for #<Vote:0xcfc860c>):
+    9:     - puts subject.inspect
+    10:     %tr
+    11:       %td{:align => "center"}= h subject.NAME
+    12:       %td{:style => "color:#0066FF; font-weight:bold"}= h subject.last_name
+    13:       %td{:align => "center"}= h subject.middle_name
+    14:       %td{:align => "center"}= h subject.age
+    15: %br/
+  app/views/votes/search.html.haml:12:in `block in _app_views_votes_search_html_haml__922889457_107284190__859012014'
+  app/views/votes/search.html.haml:9:in `_app_views_votes_search_html_haml__922889457_107284190__859012014'
+  app/controllers/votes_controller.rb:31:in `rescue in search'
+  app/controllers/votes_controller.rb:22:in `search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1405.3ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (1455.6ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 21:04:23 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (4.1ms)
+  [1m[36mVote Load (97.3ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY `votes`.`name` ASC[0m
+Rendered votes/search.html.haml within layouts/search (15091.6ms)
+Completed 200 OK in 15105ms (Views: 14997.5ms | ActiveRecord: 200.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 21:07:55 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (4.2ms)
+Rendered votes/new.html.haml within layouts/search (11.2ms)
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 21:07:59 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (21.4ms)
+Completed 200 OK in 25ms (Views: 24.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 21:08:01 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (6.1ms)
+Rendered votes/new.html.haml within layouts/search (13.9ms)
+Completed 200 OK in 17ms (Views: 16.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 21:08:03 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=new" for 127.0.0.1 at 2012-02-02 21:08:04 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 21:08:06 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/auto_complete_search?search=ra" for 127.0.0.1 at 2012-02-02 21:08:06 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/auto_complete_search?search=rag" for 127.0.0.1 at 2012-02-02 21:08:06 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghhu" for 127.0.0.1 at 2012-02-02 21:08:07 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghhu" for 127.0.0.1 at 2012-02-02 21:08:08 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghhu"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[35mVote Load (101.3ms)[0m  SELECT `votes`.* FROM `votes` ORDER BY `votes`.`name` ASC
+Rendered votes/search.html.haml within layouts/search (10812.8ms)
+Completed 200 OK in 10825ms (Views: 10714.6ms | ActiveRecord: 101.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 21:09:07 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (21.9ms)
+Completed 200 OK in 25ms (Views: 24.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 21:09:10 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (21.4ms)
+Completed 200 OK in 25ms (Views: 24.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 21:09:12 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.9ms)
+Rendered votes/new.html.haml within layouts/search (10.8ms)
+Completed 200 OK in 14ms (Views: 13.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 21:09:14 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 8ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=r" for 127.0.0.1 at 2012-02-02 21:09:14 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"r"}
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ra" for 127.0.0.1 at 2012-02-02 21:09:14 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ra"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 21:09:15 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"raghu"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 21:09:38 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"raghu"}
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=nita+sham" for 127.0.0.1 at 2012-02-02 21:09:39 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"nita sham"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=nita+sham" for 127.0.0.1 at 2012-02-02 21:09:43 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"nita sham"}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[36mVote Load (29.2ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE ((`votes`.`name` LIKE '%nita%' OR `votes`.`last_name` LIKE '%nita%' OR `votes`.`middle_name` LIKE '%nita%' OR `votes`.`voters_id` LIKE '%nita%' OR `votes`.`sex` LIKE '%nita%') AND (`votes`.`name` LIKE '%sham%' OR `votes`.`last_name` LIKE '%sham%' OR `votes`.`middle_name` LIKE '%sham%' OR `votes`.`voters_id` LIKE '%sham%' OR `votes`.`sex` LIKE '%sham%')) ORDER BY `votes`.`name` ASC[0m
+Rendered votes/search.html.haml (55.6ms)
+Completed 200 OK in 68ms (Views: 28.4ms | ActiveRecord: 29.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 21:11:01 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (21.0ms)
+Completed 200 OK in 24ms (Views: 23.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 21:11:04 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.7ms)
+Rendered votes/new.html.haml within layouts/search (10.0ms)
+Completed 200 OK in 13ms (Views: 12.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 21:11:07 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=r" for 127.0.0.1 at 2012-02-02 21:11:07 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"r"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ra" for 127.0.0.1 at 2012-02-02 21:11:08 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ra"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 21:11:09 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"raghu"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 21:12:06 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (20.6ms)
+Completed 200 OK in 24ms (Views: 23.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 21:12:12 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (22.0ms)
+Completed 200 OK in 26ms (Views: 25.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 21:12:14 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.9ms)
+Rendered votes/new.html.haml within layouts/search (10.3ms)
+Completed 200 OK in 13ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 21:12:24 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=be" for 127.0.0.1 at 2012-02-02 21:12:25 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"be"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=beb" for 127.0.0.1 at 2012-02-02 21:12:25 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"beb"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bebi" for 127.0.0.1 at 2012-02-02 21:12:25 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bebi"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bebi" for 127.0.0.1 at 2012-02-02 21:12:26 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bebi"}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[35mVote Load (27.5ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bebi%' OR `votes`.`last_name` LIKE '%bebi%' OR `votes`.`middle_name` LIKE '%bebi%' OR `votes`.`voters_id` LIKE '%bebi%' OR `votes`.`sex` LIKE '%bebi%')
+Rendered votes/search.html.haml (54.0ms)
+Completed 200 OK in 66ms (Views: 28.4ms | ActiveRecord: 27.5ms)
+
+
+Started GET "/votes/auto_complete_search?search=be" for 127.0.0.1 at 2012-02-02 21:16:05 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"be"}
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bebi" for 127.0.0.1 at 2012-02-02 21:16:06 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bebi"}
+Rendered votes/_form.html.haml (3.7ms)
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bebi%' OR `votes`.`last_name` LIKE '%bebi%' OR `votes`.`middle_name` LIKE '%bebi%' OR `votes`.`voters_id` LIKE '%bebi%' OR `votes`.`sex` LIKE '%bebi%')[0m
+Rendered votes/search.html.haml (18.1ms)
+Completed 200 OK in 30ms (Views: 20.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/votes/auto_complete_search?search=bebi" for 127.0.0.1 at 2012-02-02 21:16:06 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bebi"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=seema" for 127.0.0.1 at 2012-02-02 21:16:36 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"seema"}
+Rendered votes/_form.html.haml (4.0ms)
+  [1m[35mVote Load (28.5ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%seema%' OR `votes`.`last_name` LIKE '%seema%' OR `votes`.`middle_name` LIKE '%seema%' OR `votes`.`voters_id` LIKE '%seema%' OR `votes`.`sex` LIKE '%seema%')
+Rendered votes/search.html.haml (59.9ms)
+Completed 200 OK in 72ms (Views: 33.5ms | ActiveRecord: 28.5ms)
+
+
+Started GET "/votes/auto_complete_search?search=seema" for 127.0.0.1 at 2012-02-02 21:16:36 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"seema"}
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bebi" for 127.0.0.1 at 2012-02-02 21:16:51 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bebi"}
+Rendered votes/_form.html.haml (3.7ms)
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bebi%' OR `votes`.`last_name` LIKE '%bebi%' OR `votes`.`middle_name` LIKE '%bebi%' OR `votes`.`voters_id` LIKE '%bebi%' OR `votes`.`sex` LIKE '%bebi%')[0m
+Rendered votes/search.html.haml (17.7ms)
+Completed 200 OK in 30ms (Views: 19.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/votes/auto_complete_search?search=b" for 127.0.0.1 at 2012-02-02 21:17:44 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"b"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bh" for 127.0.0.1 at 2012-02-02 21:17:45 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bh"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bht" for 127.0.0.1 at 2012-02-02 21:17:50 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bht"}
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bhti" for 127.0.0.1 at 2012-02-02 21:17:51 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bhti"}
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bhtiya" for 127.0.0.1 at 2012-02-02 21:17:52 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bhtiya"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bhtiya" for 127.0.0.1 at 2012-02-02 21:17:52 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bhtiya"}
+Rendered votes/_form.html.haml (3.6ms)
+  [1m[35mVote Load (27.8ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bhtiya%' OR `votes`.`last_name` LIKE '%bhtiya%' OR `votes`.`middle_name` LIKE '%bhtiya%' OR `votes`.`voters_id` LIKE '%bhtiya%' OR `votes`.`sex` LIKE '%bhtiya%')
+Rendered votes/search.html.haml (37.6ms)
+Completed 200 OK in 50ms (Views: 11.8ms | ActiveRecord: 27.8ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bhatiya" for 127.0.0.1 at 2012-02-02 21:18:01 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bhatiya"}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[36mVote Load (25.6ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bhatiya%' OR `votes`.`last_name` LIKE '%bhatiya%' OR `votes`.`middle_name` LIKE '%bhatiya%' OR `votes`.`voters_id` LIKE '%bhatiya%' OR `votes`.`sex` LIKE '%bhatiya%')[0m
+Rendered votes/search.html.haml (52.2ms)
+Completed 200 OK in 64ms (Views: 28.6ms | ActiveRecord: 25.6ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bha+tiya" for 127.0.0.1 at 2012-02-02 21:18:07 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bha tiya"}
+Rendered votes/_form.html.haml (6.0ms)
+  [1m[35mVote Load (24.1ms)[0m  SELECT `votes`.* FROM `votes` WHERE ((`votes`.`name` LIKE '%bha%' OR `votes`.`last_name` LIKE '%bha%' OR `votes`.`middle_name` LIKE '%bha%' OR `votes`.`voters_id` LIKE '%bha%' OR `votes`.`sex` LIKE '%bha%') AND (`votes`.`name` LIKE '%tiya%' OR `votes`.`last_name` LIKE '%tiya%' OR `votes`.`middle_name` LIKE '%tiya%' OR `votes`.`voters_id` LIKE '%tiya%' OR `votes`.`sex` LIKE '%tiya%'))
+Rendered votes/search.html.haml (91.6ms)
+Completed 200 OK in 104ms (Views: 69.5ms | ActiveRecord: 24.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 21:20:46 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (27.4ms)
+Completed 200 OK in 32ms (Views: 31.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 21:20:48 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (5.3ms)
+Rendered votes/new.html.haml within layouts/search (13.0ms)
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 21:20:50 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 12ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=b" for 127.0.0.1 at 2012-02-02 21:20:52 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"b"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bh" for 127.0.0.1 at 2012-02-02 21:20:52 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bh"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bha" for 127.0.0.1 at 2012-02-02 21:20:52 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bha"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bhat" for 127.0.0.1 at 2012-02-02 21:20:53 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bhat"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bhati" for 127.0.0.1 at 2012-02-02 21:20:54 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bhati"}
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bhatiya" for 127.0.0.1 at 2012-02-02 21:20:54 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bhatiya"}
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bhatiya" for 127.0.0.1 at 2012-02-02 21:20:54 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bhatiya"}
+Rendered votes/search.html.haml (1.9ms)
+Completed   in 15ms
+
+ActionView::Template::Error (Inconsistent indentation: 3 tabs were used for indentation, but the rest of the document was indented using 2 spaces.):
+    11:       %td{:style => "color:#0066FF; font-weight:bold"}= h subject.sr_no
+    12:       %td{:align => "center"}= h subject.first_name
+    13:       %td{:align => "center"}= h subject.middle_name
+    14: 			%td{:align => "center"}= h subject.last_name
+    15: 			%td{:align => "center"}= h subject.voters_id
+    16: 			%td{:align => "center"}= h subject.sex
+    17: 			%td{:align => "center"}= h subject.age
+  app/views/votes/search.html.haml:14
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  [1m[36mVote Load (0.1ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bhatiya%' OR `votes`.`last_name` LIKE '%bhatiya%' OR `votes`.`middle_name` LIKE '%bhatiya%' OR `votes`.`voters_id` LIKE '%bhatiya%' OR `votes`.`sex` LIKE '%bhatiya%')[0m
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.8ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.2ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bhatiya" for 127.0.0.1 at 2012-02-02 21:21:09 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bhatiya"}
+Rendered votes/search.html.haml (1.9ms)
+Completed   in 14ms
+
+ActionView::Template::Error (Inconsistent indentation: 3 tabs were used for indentation, but the rest of the document was indented using 2 spaces.):
+    12:       %td{:align => "center"}= h subject.first_name
+    13:       %td{:align => "center"}= h subject.middle_name
+    14:       %td{:align => "center"}= h subject.last_name
+    15: 			%td{:align => "center"}= h subject.voters_id
+    16: 			%td{:align => "center"}= h subject.sex
+    17: 			%td{:align => "center"}= h subject.age
+    18: %br/
+  app/views/votes/search.html.haml:15
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  [1m[35mVote Load (0.1ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bhatiya%' OR `votes`.`last_name` LIKE '%bhatiya%' OR `votes`.`middle_name` LIKE '%bhatiya%' OR `votes`.`voters_id` LIKE '%bhatiya%' OR `votes`.`sex` LIKE '%bhatiya%')
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.7ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.6ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bhatiya" for 127.0.0.1 at 2012-02-02 21:21:23 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bhatiya"}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bhatiya%' OR `votes`.`last_name` LIKE '%bhatiya%' OR `votes`.`middle_name` LIKE '%bhatiya%' OR `votes`.`voters_id` LIKE '%bhatiya%' OR `votes`.`sex` LIKE '%bhatiya%')[0m
+Rendered votes/search.html.haml (19.5ms)
+Completed   in 31ms
+
+ActionView::Template::Error (undefined method `first_name' for #<Vote:0xc58ed58>):
+    9:     %tr
+    10:       %td{:align => "center"}= h subject.panel_no
+    11:       %td{:style => "color:#0066FF; font-weight:bold"}= h subject.sr_no
+    12:       %td{:align => "center"}= h subject.first_name
+    13:       %td{:align => "center"}= h subject.middle_name
+    14:       %td{:align => "center"}= h subject.last_name
+    15:       %td{:align => "center"}= h subject.voters_id
+  app/views/votes/search.html.haml:12:in `block in _app_views_votes_search_html_haml__922889457_103852650__859012014'
+  app/views/votes/search.html.haml:9:in `_app_views_votes_search_html_haml__922889457_103852650__859012014'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.7ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.7ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bhatiya" for 127.0.0.1 at 2012-02-02 21:21:30 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bhatiya"}
+Rendered votes/_form.html.haml (4.4ms)
+  [1m[35mVote Load (0.2ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bhatiya%' OR `votes`.`last_name` LIKE '%bhatiya%' OR `votes`.`middle_name` LIKE '%bhatiya%' OR `votes`.`voters_id` LIKE '%bhatiya%' OR `votes`.`sex` LIKE '%bhatiya%')
+Rendered votes/search.html.haml (20.5ms)
+Completed   in 38ms
+
+ActionView::Template::Error (undefined method `first_name' for #<Vote:0xc303188>):
+    9:     %tr
+    10:       %td{:align => "center"}= h subject.panel_no
+    11:       %td{:style => "color:#0066FF; font-weight:bold"}= h subject.sr_no
+    12:       %td{:align => "center"}= h subject.first_name
+    13:       %td{:align => "center"}= h subject.middle_name
+    14:       %td{:align => "center"}= h subject.last_name
+    15:       %td{:align => "center"}= h subject.voters_id
+  app/views/votes/search.html.haml:12:in `block in _app_views_votes_search_html_haml__922889457_102445530__859012014'
+  app/views/votes/search.html.haml:9:in `_app_views_votes_search_html_haml__922889457_102445530__859012014'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.8ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.6ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bhatiya" for 127.0.0.1 at 2012-02-02 21:21:42 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bhatiya"}
+Rendered votes/_form.html.haml (3.7ms)
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bhatiya%' OR `votes`.`last_name` LIKE '%bhatiya%' OR `votes`.`middle_name` LIKE '%bhatiya%' OR `votes`.`voters_id` LIKE '%bhatiya%' OR `votes`.`sex` LIKE '%bhatiya%')[0m
+Rendered votes/search.html.haml (19.4ms)
+Completed 200 OK in 31ms (Views: 21.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 21:22:37 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (20.6ms)
+Completed 200 OK in 24ms (Views: 23.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 21:22:40 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.7ms)
+Rendered votes/new.html.haml within layouts/search (10.1ms)
+Completed 200 OK in 13ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 21:22:42 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=r" for 127.0.0.1 at 2012-02-02 21:22:46 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"r"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ram" for 127.0.0.1 at 2012-02-02 21:22:47 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ram"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ramchan" for 127.0.0.1 at 2012-02-02 21:22:47 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ramchan"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ramchand" for 127.0.0.1 at 2012-02-02 21:22:48 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ramchand"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramchand" for 127.0.0.1 at 2012-02-02 21:22:48 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramchand"}
+Rendered votes/_form.html.haml (4.0ms)
+  [1m[35mVote Load (30.3ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramchand%' OR `votes`.`last_name` LIKE '%ramchand%' OR `votes`.`middle_name` LIKE '%ramchand%' OR `votes`.`voters_id` LIKE '%ramchand%' OR `votes`.`sex` LIKE '%ramchand%')
+Rendered votes/search.html.haml (87.8ms)
+Completed 200 OK in 99ms (Views: 59.7ms | ActiveRecord: 30.3ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=murli+ramchand" for 127.0.0.1 at 2012-02-02 21:23:45 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"murli ramchand"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[36mVote Load (23.9ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE ((`votes`.`name` LIKE '%murli%' OR `votes`.`last_name` LIKE '%murli%' OR `votes`.`middle_name` LIKE '%murli%' OR `votes`.`voters_id` LIKE '%murli%' OR `votes`.`sex` LIKE '%murli%') AND (`votes`.`name` LIKE '%ramchand%' OR `votes`.`last_name` LIKE '%ramchand%' OR `votes`.`middle_name` LIKE '%ramchand%' OR `votes`.`voters_id` LIKE '%ramchand%' OR `votes`.`sex` LIKE '%ramchand%'))[0m
+Rendered votes/search.html.haml (49.6ms)
+Completed 200 OK in 110ms (Views: 27.7ms | ActiveRecord: 23.9ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramchand" for 127.0.0.1 at 2012-02-02 21:24:04 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramchand"}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramchand%' OR `votes`.`last_name` LIKE '%ramchand%' OR `votes`.`middle_name` LIKE '%ramchand%' OR `votes`.`voters_id` LIKE '%ramchand%' OR `votes`.`sex` LIKE '%ramchand%')
+Rendered votes/search.html.haml (42.6ms)
+Completed 200 OK in 54ms (Views: 44.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=" for 127.0.0.1 at 2012-02-02 21:24:20 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>""}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[36mVote Load (68.5ms)[0m  [1mSELECT `votes`.* FROM `votes`[0m
+Rendered votes/search.html.haml (1668.1ms)
+Completed 200 OK in 1678ms (Views: 1601.6ms | ActiveRecord: 68.5ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=a" for 127.0.0.1 at 2012-02-02 21:24:57 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"a"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[35mVote Load (64.8ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%a%' OR `votes`.`last_name` LIKE '%a%' OR `votes`.`middle_name` LIKE '%a%' OR `votes`.`voters_id` LIKE '%a%' OR `votes`.`sex` LIKE '%a%')
+Rendered votes/search.html.haml (1739.1ms)
+Completed 200 OK in 1752ms (Views: 1676.6ms | ActiveRecord: 64.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=r" for 127.0.0.1 at 2012-02-02 21:26:48 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"r"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ramch" for 127.0.0.1 at 2012-02-02 21:26:50 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ramch"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ramcha" for 127.0.0.1 at 2012-02-02 21:26:50 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ramcha"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ramchan" for 127.0.0.1 at 2012-02-02 21:26:50 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ramchan"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ramchand" for 127.0.0.1 at 2012-02-02 21:26:51 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ramchand"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramchand" for 127.0.0.1 at 2012-02-02 21:26:51 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramchand"}
+Rendered votes/_form.html.haml (3.6ms)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramchand%' OR `votes`.`last_name` LIKE '%ramchand%' OR `votes`.`middle_name` LIKE '%ramchand%' OR `votes`.`voters_id` LIKE '%ramchand%' OR `votes`.`sex` LIKE '%ramchand%')[0m
+Rendered votes/search.html.haml (41.2ms)
+Completed 200 OK in 53ms (Views: 42.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/votes/auto_complete_search?search=b" for 127.0.0.1 at 2012-02-02 21:29:08 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"b"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bebi" for 127.0.0.1 at 2012-02-02 21:29:09 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bebi"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bebi" for 127.0.0.1 at 2012-02-02 21:29:10 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bebi"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[35mVote Load (27.7ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bebi%' OR `votes`.`last_name` LIKE '%bebi%' OR `votes`.`middle_name` LIKE '%bebi%' OR `votes`.`voters_id` LIKE '%bebi%' OR `votes`.`sex` LIKE '%bebi%')
+Rendered votes/search.html.haml (55.9ms)
+Completed 200 OK in 70ms (Views: 30.3ms | ActiveRecord: 27.7ms)
+
+
+Started GET "/votes/auto_complete_search?search=b" for 127.0.0.1 at 2012-02-02 21:29:36 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"b"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bebi" for 127.0.0.1 at 2012-02-02 21:29:37 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bebi"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bebi" for 127.0.0.1 at 2012-02-02 21:29:37 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bebi"}
+Rendered votes/_form.html.haml (4.0ms)
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bebi%' OR `votes`.`last_name` LIKE '%bebi%' OR `votes`.`middle_name` LIKE '%bebi%' OR `votes`.`voters_id` LIKE '%bebi%' OR `votes`.`sex` LIKE '%bebi%')[0m
+Rendered votes/search.html.haml (20.0ms)
+Completed 200 OK in 32ms (Views: 22.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramu" for 127.0.0.1 at 2012-02-02 21:30:22 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramu"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[35mVote Load (20.5ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramu%' OR `votes`.`last_name` LIKE '%ramu%' OR `votes`.`middle_name` LIKE '%ramu%' OR `votes`.`voters_id` LIKE '%ramu%' OR `votes`.`sex` LIKE '%ramu%')
+Rendered votes/search.html.haml (50.7ms)
+Completed 200 OK in 63ms (Views: 32.4ms | ActiveRecord: 20.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 21:31:55 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (21.1ms)
+Completed 200 OK in 24ms (Views: 23.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 21:31:57 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (4.0ms)
+Rendered votes/new.html.haml within layouts/search (10.6ms)
+Completed 200 OK in 14ms (Views: 13.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 21:31:59 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=b" for 127.0.0.1 at 2012-02-02 21:32:00 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"b"}
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=be" for 127.0.0.1 at 2012-02-02 21:32:00 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"be"}
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=beb" for 127.0.0.1 at 2012-02-02 21:32:01 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"beb"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bebi" for 127.0.0.1 at 2012-02-02 21:32:01 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bebi"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bebi" for 127.0.0.1 at 2012-02-02 21:32:02 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bebi"}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[36mVote Load (17.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bebi%' OR `votes`.`last_name` LIKE '%bebi%' OR `votes`.`middle_name` LIKE '%bebi%' OR `votes`.`voters_id` LIKE '%bebi%' OR `votes`.`sex` LIKE '%bebi%')[0m
+Rendered votes/search.html.haml (46.0ms)
+Completed 200 OK in 58ms (Views: 30.9ms | ActiveRecord: 17.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 21:32:39 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (20.9ms)
+Completed 200 OK in 24ms (Views: 23.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 21:32:41 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.9ms)
+Rendered votes/new.html.haml within layouts/search (10.7ms)
+Completed 200 OK in 14ms (Views: 13.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 21:32:43 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 21:32:44 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"raghu"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 21:39:11 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (21.2ms)
+Completed 200 OK in 24ms (Views: 24.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 21:39:13 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (6.3ms)
+Rendered votes/new.html.haml within layouts/search (13.7ms)
+Completed 200 OK in 17ms (Views: 16.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 22:20:29 +0530
+
+LoadError (Expected /home/dinesh/election/demo/scoped_search_demo_app/app/helpers/votes_helper.rb to define VotesHelper):
+  app/controllers/application_controller.rb:1:in `<top (required)>'
+  app/controllers/votes_controller.rb:1:in `<top (required)>'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 22:20:45 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (20.9ms)
+Completed 200 OK in 24ms (Views: 23.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 22:20:47 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/new.html.haml within layouts/search (10.3ms)
+Completed 200 OK in 13ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 22:22:15 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/new.html.haml within layouts/search (10.4ms)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 22:23:06 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.7ms)
+Rendered votes/new.html.haml within layouts/search (10.5ms)
+Completed 200 OK in 14ms (Views: 13.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:23:10 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 22:25:05 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/new.html.haml within layouts/search (11.5ms)
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:25:19 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 8ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=45" for 127.0.0.1 at 2012-02-02 22:25:26 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"45"}
+Completed 200 OK in 57ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=45" for 127.0.0.1 at 2012-02-02 22:25:26 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"45"}
+Rendered votes/_form.html.haml (4.0ms)
+  [1m[35mVote Load (33.0ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%45%' OR `votes`.`last_name` LIKE '%45%' OR `votes`.`middle_name` LIKE '%45%' OR `votes`.`voters_id` LIKE '%45%' OR `votes`.`age` = 45 OR `votes`.`sex` LIKE '%45%' OR `votes`.`panel_no` = 45) ORDER BY `votes`.`panel_no` ASC
+Rendered votes/search.html.haml (84.6ms)
+Completed 200 OK in 112ms (Views: 53.8ms | ActiveRecord: 33.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=45" for 127.0.0.1 at 2012-02-02 22:25:58 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"45"}
+Rendered votes/_form.html.haml (4.1ms)
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%45%' OR `votes`.`last_name` LIKE '%45%' OR `votes`.`middle_name` LIKE '%45%' OR `votes`.`voters_id` LIKE '%45%' OR `votes`.`age` = 45 OR `votes`.`sex` LIKE '%45%' OR `votes`.`panel_no` = 45) ORDER BY `votes`.`panel_no` ASC[0m
+Rendered votes/search.html.haml (49.9ms)
+Completed 200 OK in 64ms (Views: 53.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bebi" for 127.0.0.1 at 2012-02-02 22:27:24 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bebi"}
+Rendered votes/_form.html.haml (3.6ms)
+  [1m[35mVote Load (25.5ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bebi%' OR `votes`.`last_name` LIKE '%bebi%' OR `votes`.`middle_name` LIKE '%bebi%' OR `votes`.`voters_id` LIKE '%bebi%' OR `votes`.`sex` LIKE '%bebi%') ORDER BY `votes`.`panel_no` ASC
+Rendered votes/search.html.haml (51.1ms)
+Completed 200 OK in 63ms (Views: 27.6ms | ActiveRecord: 25.5ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 22:27:43 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"raghu"}
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 22:27:47 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (25.2ms)
+Completed 200 OK in 30ms (Views: 29.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 22:27:49 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/new.html.haml within layouts/search (10.2ms)
+Completed 200 OK in 13ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:27:51 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=beb" for 127.0.0.1 at 2012-02-02 22:28:03 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"beb"}
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bebi" for 127.0.0.1 at 2012-02-02 22:28:03 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bebi"}
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bebi" for 127.0.0.1 at 2012-02-02 22:28:03 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bebi"}
+Rendered votes/_form.html.haml (3.7ms)
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bebi%' OR `votes`.`last_name` LIKE '%bebi%' OR `votes`.`middle_name` LIKE '%bebi%' OR `votes`.`voters_id` LIKE '%bebi%' OR `votes`.`sex` LIKE '%bebi%') ORDER BY `votes`.`panel_no` ASC[0m
+Rendered votes/search.html.haml within layouts/search (23.6ms)
+Completed 200 OK in 36ms (Views: 26.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/votes/auto_complete_search?search=ra" for 127.0.0.1 at 2012-02-02 22:28:30 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ra"}
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=rag" for 127.0.0.1 at 2012-02-02 22:28:30 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"rag"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ragh" for 127.0.0.1 at 2012-02-02 22:28:31 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ragh"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ra" for 127.0.0.1 at 2012-02-02 22:28:32 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ra"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:28:33 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ram" for 127.0.0.1 at 2012-02-02 22:28:34 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ram"}
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ramch" for 127.0.0.1 at 2012-02-02 22:28:34 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ramch"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramch" for 127.0.0.1 at 2012-02-02 22:28:35 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramch"}
+Rendered votes/_form.html.haml (4.0ms)
+  [1m[35mVote Load (27.3ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramch%' OR `votes`.`last_name` LIKE '%ramch%' OR `votes`.`middle_name` LIKE '%ramch%' OR `votes`.`voters_id` LIKE '%ramch%' OR `votes`.`sex` LIKE '%ramch%') ORDER BY `votes`.`panel_no` ASC
+Rendered votes/search.html.haml within layouts/search (82.6ms)
+Completed 200 OK in 98ms (Views: 58.2ms | ActiveRecord: 27.3ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:29:16 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=r" for 127.0.0.1 at 2012-02-02 22:29:17 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"r"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:29:18 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=r" for 127.0.0.1 at 2012-02-02 22:29:19 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"r"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ra" for 127.0.0.1 at 2012-02-02 22:29:20 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ra"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ram" for 127.0.0.1 at 2012-02-02 22:29:20 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ram"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ramc" for 127.0.0.1 at 2012-02-02 22:29:21 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ramc"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ramch" for 127.0.0.1 at 2012-02-02 22:29:21 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ramch"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ramcha" for 127.0.0.1 at 2012-02-02 22:29:21 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ramcha"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ramchan" for 127.0.0.1 at 2012-02-02 22:29:21 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ramchan"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ramchand" for 127.0.0.1 at 2012-02-02 22:29:22 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ramchand"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramchand" for 127.0.0.1 at 2012-02-02 22:29:23 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramchand"}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[36mVote Load (34.0ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramchand%' OR `votes`.`last_name` LIKE '%ramchand%' OR `votes`.`middle_name` LIKE '%ramchand%' OR `votes`.`voters_id` LIKE '%ramchand%' OR `votes`.`sex` LIKE '%ramchand%') ORDER BY `votes`.`panel_no` ASC[0m
+Rendered votes/search.html.haml within layouts/search (89.1ms)
+Completed 200 OK in 101ms (Views: 57.9ms | ActiveRecord: 34.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:39:39 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=r" for 127.0.0.1 at 2012-02-02 22:39:43 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"r"}
+Completed 200 OK in 56ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:39:44 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=r" for 127.0.0.1 at 2012-02-02 22:39:49 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"r"}
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 22:39:51 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"raghu"}
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ragh" for 127.0.0.1 at 2012-02-02 22:39:55 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ragh"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:39:55 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 22:39:59 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"raghu"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:40:00 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 22:40:07 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (24.2ms)
+Completed 200 OK in 30ms (Views: 30.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:40:07 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 22:40:09 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (5.8ms)
+Rendered votes/new.html.haml within layouts/search (14.5ms)
+Completed 200 OK in 18ms (Views: 17.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:40:11 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ben" for 127.0.0.1 at 2012-02-02 22:40:13 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ben"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=be" for 127.0.0.1 at 2012-02-02 22:40:13 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"be"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=bebi" for 127.0.0.1 at 2012-02-02 22:40:14 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"bebi"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=bebi" for 127.0.0.1 at 2012-02-02 22:40:14 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"bebi"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[35mVote Load (0.2ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%bebi%' OR `votes`.`last_name` LIKE '%bebi%' OR `votes`.`middle_name` LIKE '%bebi%' OR `votes`.`voters_id` LIKE '%bebi%' OR `votes`.`sex` LIKE '%bebi%') ORDER BY `votes`.`panel_no` ASC
+Rendered votes/search.html.haml within layouts/search (23.5ms)
+Completed 200 OK in 36ms (Views: 26.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/votes/auto_complete_search?search=r" for 127.0.0.1 at 2012-02-02 22:41:40 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"r"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ra" for 127.0.0.1 at 2012-02-02 22:41:41 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ra"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=rag" for 127.0.0.1 at 2012-02-02 22:41:41 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"rag"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ragh" for 127.0.0.1 at 2012-02-02 22:41:41 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ragh"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 22:41:42 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"raghu"}
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 22:56:10 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (21.0ms)
+Completed 200 OK in 24ms (Views: 23.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 22:56:12 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/new.html.haml within layouts/search (10.5ms)
+Completed 200 OK in 14ms (Views: 13.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:56:14 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=ra" for 127.0.0.1 at 2012-02-02 22:56:15 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ra"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 22:56:16 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"raghu"}
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 22:56:51 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (4.1ms)
+  [1m[36mVote Load (18.6ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%raghu%' OR `votes`.`last_name` LIKE '%raghu%' OR `votes`.`middle_name` LIKE '%raghu%' OR `votes`.`voters_id` LIKE '%raghu%' OR `votes`.`sex` LIKE '%raghu%') ORDER BY `votes`.`panel_no` ASC[0m
+Rendered votes/search.html.haml within layouts/search (51.9ms)
+Completed 200 OK in 108ms (Views: 36.4ms | ActiveRecord: 18.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 22:56:59 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (21.4ms)
+Completed 200 OK in 25ms (Views: 24.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 22:57:01 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.7ms)
+Rendered votes/new.html.haml within layouts/search (10.1ms)
+Completed 200 OK in 15ms (Views: 14.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:57:03 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>""}
+Completed   in 8ms
+
+ArgumentError (wrong number of arguments (2 for 1)):
+  app/controllers/votes_controller.rb:24:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.1ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=ra" for 127.0.0.1 at 2012-02-02 22:57:04 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"ra"}
+Completed   in 7ms
+
+ArgumentError (wrong number of arguments (2 for 1)):
+  app/controllers/votes_controller.rb:24:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.9ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.4ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 22:57:05 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (3.7ms)
+  [1m[35mVote Load (0.2ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%raghu%' OR `votes`.`last_name` LIKE '%raghu%' OR `votes`.`middle_name` LIKE '%raghu%' OR `votes`.`voters_id` LIKE '%raghu%' OR `votes`.`sex` LIKE '%raghu%') ORDER BY `votes`.`panel_no` ASC
+Rendered votes/search.html.haml within layouts/search (66.9ms)
+Completed 200 OK in 79ms (Views: 69.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/votes/auto_complete_search?search=raghu" for 127.0.0.1 at 2012-02-02 22:57:05 +0530
+  Processing by VotesController#auto_complete_search as JSON
+  Parameters: {"search"=>"raghu"}
+Completed   in 9ms
+
+ArgumentError (wrong number of arguments (2 for 1)):
+  app/controllers/votes_controller.rb:24:in `auto_complete_search'
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.7ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=raghu" for 127.0.0.1 at 2012-02-02 22:57:50 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"raghu"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[36mVote Load (0.2ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%raghu%' OR `votes`.`last_name` LIKE '%raghu%' OR `votes`.`middle_name` LIKE '%raghu%' OR `votes`.`voters_id` LIKE '%raghu%' OR `votes`.`sex` LIKE '%raghu%') ORDER BY `votes`.`panel_no` ASC[0m
+Rendered votes/search.html.haml within layouts/search (24.0ms)
+Completed 200 OK in 37ms (Views: 26.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 22:57:57 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (6.1ms)
+Rendered votes/new.html.haml within layouts/search (16.4ms)
+Completed 200 OK in 21ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:57:58 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=t" for 127.0.0.1 at 2012-02-02 22:57:59 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:58:00 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/auto_complete_search?search=r" for 127.0.0.1 at 2012-02-02 22:58:02 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=rag" for 127.0.0.1 at 2012-02-02 22:58:03 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=rag" for 127.0.0.1 at 2012-02-02 22:58:03 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"rag"}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[35mVote Load (27.5ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%rag%' OR `votes`.`last_name` LIKE '%rag%' OR `votes`.`middle_name` LIKE '%rag%' OR `votes`.`voters_id` LIKE '%rag%' OR `votes`.`sex` LIKE '%rag%') ORDER BY `votes`.`panel_no` ASC
+Rendered votes/search.html.haml within layouts/search (62.9ms)
+Completed 200 OK in 76ms (Views: 38.5ms | ActiveRecord: 27.5ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 22:58:59 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramcha" for 127.0.0.1 at 2012-02-02 22:59:00 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramcha"}
+Rendered votes/_form.html.haml (5.1ms)
+  [1m[36mVote Load (20.9ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramcha%' OR `votes`.`last_name` LIKE '%ramcha%' OR `votes`.`middle_name` LIKE '%ramcha%' OR `votes`.`voters_id` LIKE '%ramcha%' OR `votes`.`sex` LIKE '%ramcha%') ORDER BY `votes`.`panel_no` ASC[0m
+Rendered votes/search.html.haml within layouts/search (75.1ms)
+Completed 200 OK in 94ms (Views: 62.6ms | ActiveRecord: 20.9ms)
+
+
+Started GET "/votes/auto_complete_search?search=ramcha" for 127.0.0.1 at 2012-02-02 22:59:00 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (1.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramcha" for 127.0.0.1 at 2012-02-02 22:59:44 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramcha"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramcha%' OR `votes`.`last_name` LIKE '%ramcha%' OR `votes`.`middle_name` LIKE '%ramcha%' OR `votes`.`voters_id` LIKE '%ramcha%' OR `votes`.`sex` LIKE '%ramcha%') ORDER BY `votes`.`panel_no` ASC
+Rendered votes/search.html.haml within layouts/search (49.3ms)
+Completed 200 OK in 62ms (Views: 51.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramcha" for 127.0.0.1 at 2012-02-02 22:59:49 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramcha"}
+Rendered votes/_form.html.haml (3.7ms)
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramcha%' OR `votes`.`last_name` LIKE '%ramcha%' OR `votes`.`middle_name` LIKE '%ramcha%' OR `votes`.`voters_id` LIKE '%ramcha%' OR `votes`.`sex` LIKE '%ramcha%') ORDER BY `votes`.`panel_no` ASC[0m
+Rendered votes/search.html.haml within layouts/search (47.5ms)
+Completed 200 OK in 60ms (Views: 50.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramcha" for 127.0.0.1 at 2012-02-02 23:00:17 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramcha"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[35mVote Load (0.3ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramcha%' OR `votes`.`last_name` LIKE '%ramcha%' OR `votes`.`middle_name` LIKE '%ramcha%' OR `votes`.`voters_id` LIKE '%ramcha%' OR `votes`.`sex` LIKE '%ramcha%') ORDER BY `votes`.`panel_no` ASC
+Rendered votes/search.html.haml within layouts/search (54.7ms)
+Completed 200 OK in 68ms (Views: 57.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramcha" for 127.0.0.1 at 2012-02-02 23:03:17 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramcha"}
+Rendered votes/_form.html.haml (4.1ms)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramcha%' OR `votes`.`last_name` LIKE '%ramcha%' OR `votes`.`middle_name` LIKE '%ramcha%' OR `votes`.`voters_id` LIKE '%ramcha%' OR `votes`.`sex` LIKE '%ramcha%') ORDER BY `votes`.`panel_no` ASC[0m
+Rendered votes/search.html.haml within layouts/search (102.3ms)
+Completed 200 OK in 116ms (Views: 104.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramcha" for 127.0.0.1 at 2012-02-02 23:03:36 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramcha"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[35mVote Load (0.5ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramcha%' OR `votes`.`last_name` LIKE '%ramcha%' OR `votes`.`middle_name` LIKE '%ramcha%' OR `votes`.`voters_id` LIKE '%ramcha%' OR `votes`.`sex` LIKE '%ramcha%') ORDER BY `votes`.`panel_no` ASC
+Rendered votes/search.html.haml within layouts/search (55.6ms)
+Completed 200 OK in 68ms (Views: 58.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramcha" for 127.0.0.1 at 2012-02-02 23:03:54 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramcha"}
+Rendered votes/_form.html.haml (3.7ms)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramcha%' OR `votes`.`last_name` LIKE '%ramcha%' OR `votes`.`middle_name` LIKE '%ramcha%' OR `votes`.`voters_id` LIKE '%ramcha%' OR `votes`.`sex` LIKE '%ramcha%') ORDER BY `votes`.`panel_no` ASC[0m
+Rendered votes/search.html.haml within layouts/search (55.0ms)
+Completed 200 OK in 68ms (Views: 58.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramcha" for 127.0.0.1 at 2012-02-02 23:04:00 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramcha"}
+Rendered votes/_form.html.haml (3.8ms)
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramcha%' OR `votes`.`last_name` LIKE '%ramcha%' OR `votes`.`middle_name` LIKE '%ramcha%' OR `votes`.`voters_id` LIKE '%ramcha%' OR `votes`.`sex` LIKE '%ramcha%') ORDER BY `votes`.`panel_no` ASC
+Rendered votes/search.html.haml within layouts/search (98.3ms)
+Completed 200 OK in 111ms (Views: 101.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=ramcha" for 127.0.0.1 at 2012-02-02 23:04:08 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"ramcha"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[36mVote Load (0.4ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%ramcha%' OR `votes`.`last_name` LIKE '%ramcha%' OR `votes`.`middle_name` LIKE '%ramcha%' OR `votes`.`voters_id` LIKE '%ramcha%' OR `votes`.`sex` LIKE '%ramcha%') ORDER BY `votes`.`panel_no` ASC[0m
+Rendered votes/search.html.haml within layouts/search (65.0ms)
+Completed 200 OK in 78ms (Views: 67.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 23:04:14 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/new.html.haml within layouts/search (12.4ms)
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:04:18 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/auto_complete_search?search=re" for 127.0.0.1 at 2012-02-02 23:04:20 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:04:21 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"re"}
+Rendered votes/_form.html.haml (3.9ms)
+  [1m[35mVote Load (37.8ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC
+Rendered votes/search.html.haml within layouts/search (407.8ms)
+Completed 200 OK in 421ms (Views: 373.0ms | ActiveRecord: 37.8ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:06:45 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"re"}
+Rendered votes/_form.html.haml (4.0ms)
+  [1m[36mVote Load (1.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC[0m
+Rendered votes/search.html.haml within layouts/search (366.2ms)
+Completed 200 OK in 379ms (Views: 367.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:08:18 +0530
+
+SyntaxError (/home/dinesh/election/demo/scoped_search_demo_app/app/controllers/votes_controller.rb:14: syntax error, unexpected tINTEGER, expecting tSTRING_CONTENT or tSTRING_DBEG or tSTRING_DVAR or tSTRING_END
+... 'panel_no').all(:limit => :200)
+...                               ^):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:08:31 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"re"}
+  [1m[35mVote Load (28.7ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 200
+Rendered votes/_form.html.haml (4.1ms)
+Rendered votes/search.html.haml within layouts/search (100.6ms)
+Completed 200 OK in 151ms (Views: 106.1ms | ActiveRecord: 28.7ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:08:52 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 23:09:16 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.7ms)
+Rendered votes/new.html.haml within layouts/search (10.1ms)
+Completed 200 OK in 13ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=" for 127.0.0.1 at 2012-02-02 23:09:39 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>""}
+  [1m[36mVote Load (23.0ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY `votes`.`panel_no` ASC LIMIT 200[0m
+Rendered votes/_form.html.haml (3.9ms)
+Rendered votes/search.html.haml within layouts/search (56.5ms)
+Completed 200 OK in 104ms (Views: 62.4ms | ActiveRecord: 23.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 23:09:48 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (6.2ms)
+Rendered votes/new.html.haml within layouts/search (16.8ms)
+Completed 200 OK in 22ms (Views: 21.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:09:51 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/auto_complete_search?search=re" for 127.0.0.1 at 2012-02-02 23:09:52 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:09:52 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"re"}
+  [1m[35mVote Load (0.3ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 200
+Rendered votes/_form.html.haml (3.7ms)
+Rendered votes/search.html.haml within layouts/search (47.7ms)
+Completed 200 OK in 65ms (Views: 50.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 23:10:19 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (4.0ms)
+Rendered votes/new.html.haml within layouts/search (13.0ms)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:10:21 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:10:22 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"re"}
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 200[0m
+Rendered votes/_form.html.haml (3.7ms)
+Rendered votes/search.html.haml within layouts/search (49.1ms)
+Completed 200 OK in 66ms (Views: 52.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/votes/auto_complete_search?search=re" for 127.0.0.1 at 2012-02-02 23:10:22 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (50.3ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:10:48 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=" for 127.0.0.1 at 2012-02-02 23:10:48 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>""}
+  [1m[35mVote Load (0.4ms)[0m  SELECT `votes`.* FROM `votes` ORDER BY `votes`.`panel_no` ASC LIMIT 200
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/search.html.haml within layouts/search (54.4ms)
+Completed 200 OK in 71ms (Views: 57.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:11:02 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.9ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:11:10 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 23:12:50 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (21.0ms)
+Completed 200 OK in 24ms (Views: 24.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 23:12:52 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (3.7ms)
+Rendered votes/new.html.haml within layouts/search (10.7ms)
+Completed 200 OK in 14ms (Views: 13.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=" for 127.0.0.1 at 2012-02-02 23:12:55 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>""}
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY `votes`.`panel_no` ASC LIMIT 200[0m
+Rendered votes/_form.html.haml (3.9ms)
+Rendered votes/search.html.haml within layouts/search (51.9ms)
+Completed 200 OK in 67ms (Views: 54.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=" for 127.0.0.1 at 2012-02-02 23:13:56 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>""}
+  [1m[35mVote Load (0.3ms)[0m  SELECT `votes`.* FROM `votes` ORDER BY `votes`.`panel_no` ASC LIMIT 200
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/search.html.haml within layouts/search (51.5ms)
+Completed 200 OK in 66ms (Views: 54.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=" for 127.0.0.1 at 2012-02-02 23:14:30 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>""}
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` ORDER BY `votes`.`panel_no` ASC LIMIT 200[0m
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/search.html.haml within layouts/search (50.0ms)
+Completed 200 OK in 66ms (Views: 53.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-02-02 23:15:12 +0530
+  Processing by VotesController#index as HTML
+Rendered votes/index.html.haml within layouts/application (21.8ms)
+Completed 200 OK in 25ms (Views: 24.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/new" for 127.0.0.1 at 2012-02-02 23:16:06 +0530
+  Processing by VotesController#new as HTML
+Rendered votes/_form.html.haml (4.0ms)
+Rendered votes/new.html.haml within layouts/search (10.5ms)
+Completed 200 OK in 14ms (Views: 13.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:16:08 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=" for 127.0.0.1 at 2012-02-02 23:16:36 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/auto_complete_search?search=re" for 127.0.0.1 at 2012-02-02 23:16:36 +0530
+
+AbstractController::ActionNotFound (The action 'auto_complete_search' could not be found for VotesController):
+  
+
+Rendered /home/dinesh/.rvm/gems/ruby-1.9.2-p290@demo_elect/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.8ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:16:36 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"re"}
+  [1m[35mVote Load (0.2ms)[0m  SELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 200
+Rendered votes/_form.html.haml (3.8ms)
+Rendered votes/search.html.haml within layouts/search (54.8ms)
+Completed 200 OK in 71ms (Views: 57.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/votes/search?utf8=%E2%9C%93&search=re" for 127.0.0.1 at 2012-02-02 23:17:28 +0530
+  Processing by VotesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"re"}
+  [1m[36mVote Load (0.3ms)[0m  [1mSELECT `votes`.* FROM `votes` WHERE (`votes`.`name` LIKE '%re%' OR `votes`.`last_name` LIKE '%re%' OR `votes`.`middle_name` LIKE '%re%' OR `votes`.`voters_id` LIKE '%re%' OR `votes`.`sex` LIKE '%re%') ORDER BY `votes`.`panel_no` ASC LIMIT 200[0m
+Rendered votes/_form.html.haml (4.2ms)
+Rendered votes/search.html.haml within layouts/search (49.2ms)
+Completed 200 OK in 66ms (Views: 52.3ms | ActiveRecord: 0.3ms)
