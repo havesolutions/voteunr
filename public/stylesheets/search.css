@@ -68,3 +68,11 @@ body{
  	color:#FFFF00;
 }
 
+.pagination span.current {
+ 	color:#FFFAF0;
+}
+
+.pagination span.gap {
+ 	color:#FFFAF0;
+}
+
