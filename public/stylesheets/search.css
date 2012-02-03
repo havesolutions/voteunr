@@ -60,3 +60,11 @@ body{
   margin: 0;
 }
 
+#search_table table tbody tr td a {
+	color:#FFFF00;
+}
+
+.pagination span a {
+ 	color:#FFFF00;
+}
+

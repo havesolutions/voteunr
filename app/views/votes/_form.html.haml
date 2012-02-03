@@ -5,5 +5,5 @@
 
 #people_search
   = form_tag search_votes_path, :method => :get, :id => 'search_form' do
-    = auto_complete_field_tag_jquery(:search, params[:search], {:placeholder => "Type Space For Search Options"})
+    = text_field_tag :search, params[:search], :size => 40, :placeholder => "Enter search term..."
     %button#submit_search{:style => "font-size: 12px;"} Search

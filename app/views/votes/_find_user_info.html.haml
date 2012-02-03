@@ -1,0 +1,13 @@
+#address
+  = form_tag(nil, :method=>'post', :multipart => true) do
+    %p{:style => "color:#FF0000"}
+      Address:
+      %br/
+      = text_area_tag("address", @user.address_line_1, :rows => 5, :cols => 25,:class => 'addres_txt-area')
+    %p{:style => "color:#FF0000"}
+      Mobile No:
+      %br/
+      = text_field_tag :mob_no, @user.mobile_num, :size => 10
+    - if false
+      %p
+        = submit_tag 'Update mobile No'

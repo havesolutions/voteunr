@@ -1,20 +1,22 @@
 = render :partial => 'form'
 %br/
-
-%table{:border => 2, :align => "center", :width => "500", :height => "200",:style=> "overflow:scroll;"}
-  %tr
-    - Vote::ColumnNames.each do |column|
-      %th=column
-  - @records.each do |record|
+#search_table
+  %table{:border => 2, :align => "center", :bordercolor => "white", :width => "500", :height => "200",:style=> "overflow:fixed;"}
     %tr
-      %td{:align => "center"}= h record.panel_no.present? ? record.panel_no : '-'
-      %td{:style => "color:#0066FF; font-weight:bold"}= h record.sr_no.present? ? record.sr_no : '-'
-      %td{:align => "center"}= h record.name.present? ? record.name : '-'
-      %td{:align => "center"}= h record.middle_name.present? ? record.middle_name : '-'
-      %td{:align => "center"}= h record.last_name.present? ? record.last_name : '-'
-      %td{:align => "center"}= h record.voters_id.present? ? record.voters_id : '-'
-      %td{:align => "center"}= h record.sex.present? ? record.sex : '-'
-      %td{:align => "center"}= h record.age.present? ? record.age : '-'
+      - Vote::ColumnNames.each do |column|
+        %th{:style => "color:#FF0000"}=column
+    - @records.each do |record|
+      %tr
+        %td{:align => "center",:style => "color:#FFFF00"}= h record.panel_no.present? ? record.panel_no : '-'
+        %td{:align => "center",:style => "color:#FFFF00"}= h record.sr_no.present? ? (link_to_function record.sr_no, "findAddress($(this))", :class => "people_sr_no") : '-'
+        %td{:align => "center",:style => "color:#FFFF00"}= h record.name.present? ? record.name : '-'
+        %td{:align => "center",:style => "color:#FFFF00"}= h record.middle_name.present? ? record.middle_name : '-'
+        %td{:align => "center",:style => "color:#FFFF00"}= h record.last_name.present? ? record.last_name : '-'
+        %td{:align => "center",:style => "color:#FFFF00"}= h record.voters_id.present? ? record.voters_id : '-'
+        %td{:align => "center",:style => "color:#FFFF00"}= h record.sex.present? ? record.sex : '-'
+        %td{:align => "center",:style => "color:#FFFF00"}= h record.age.present? ? record.age : '-'
 = paginate @records
 %br/
 
+
+#people_info

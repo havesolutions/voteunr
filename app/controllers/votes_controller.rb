@@ -19,6 +19,13 @@ class VotesController < ApplicationController
 		render :layout => "search"
 	end
 
+	def find_user_address
+		if params[:id].present?
+			@user = Vote.find_by_sr_no(params[:id])
+			render :partial => "find_user_info"
+		end
+	end
+
 #  def auto_complete_search
 #    begin
 #      @items = Vote.complete_for(params[:search])

@@ -1,19 +1,30 @@
 /* CSS Document */
 
 body{
-	background:url(../images/bg.jpg) repeat-y center top #000;
+	background:url(img/bg.jpg) repeat-y center top #000;
 	text-align:center;
 	margin:0;
 	padding:0;
 }
 
+#left{
+	
+	width:200px;
+	min-height:575px;
+	margin:auto;
+	font:12px Arial, Helvetica, sans-serif;
+	float:left;
+	text-align:center;
+}
+
 #container{
-	background:url(../images/full.jpg) repeat-y top left #000;
+	background:url(img/full.jpg) repeat-y top left #000;
 	width:720px;
 	min-height:575px;
 	margin:auto;
 	font:12px Arial, Helvetica, sans-serif;
 }
+
 
 #content{
 	width:434px;
@@ -21,7 +32,7 @@ body{
 	text-align:left;
 	padding-top:1px;
 	padding-bottom:1px;
-	height:100%;
+	height:555px;
 }
 
 #content h1{
@@ -32,7 +43,8 @@ body{
 	letter-spacing:-1px;
 	margin:30px 60px 0 30px;
 	line-height:28px;
-	text-align:center;
+	text-align: center
+	
 }
 
 #content h3{
@@ -44,24 +56,33 @@ body{
 	margin:0 60px 10px 30px;
 	padding-left:4px;
 	line-height:18px;
+	text-align: center
 }
 
 #content p{
 	font:12px Arial, Helvetica, sans-serif;
+	text-align: justify;
 	line-height:20px;
+	letter-spacing:1px;
+	margin:10px 50px 10px 30px;
+}
+#content l{
+	font:12px Arial, Helvetica, sans-serif;
+	line-height:500px;
 	letter-spacing:1px;
 	margin:10px 50px 10px 30px;
 }
 
 #content a,#footer a{
-	color:#FFF000;
+	color:#FFF222;
 	text-decoration:none;
 	font-weight:900;
 }
 
 #content a:hover,#footer a:hover{
-	color:#ED145A;
+	color:#FFFFF;
 	text-decoration:none;
+	text-align:center;
 }
 
 #content b{
@@ -80,8 +101,8 @@ body{
 	width:70%;
 	margin-left:50px;
 	background-color:#222;
-	border-top:2px solid #FFF000;
-	border-bottom:2px solid #FFF000;
+	border-top:0px solid #FFF000;
+	border-bottom:0px solid #FFF000;
 }
 
 #content blockquote p{
@@ -90,7 +111,7 @@ body{
 }
 
 #content img{
-	border:2px solid #FFF000;
+	border:.0px solid #FFF000;
 	padding:3px;
 }
 
@@ -113,7 +134,7 @@ body{
 }
 
 #content ul{
-	list-style-image:url(../images/bullet.gif);
+	list-style-image:url(img/bullet.gif);
 }
 
 #content .blogfoot{
@@ -122,7 +143,7 @@ body{
 }
 
 #content .foot_top{
-	font:11px Arial, Helvetica, sans-serif;
+	font:10px Arial, Helvetica, sans-serif;
 }
 
 #content .foot_bottom{
@@ -136,15 +157,17 @@ body{
 	font:11px Arial, Helvetica, sans-serif;
 }
 
+
 #rightside{
 	float:right;
 	width:286px;
-	min-height:575px;
+	min-height:375px;
 }
 
+
 #title{
-	background:url(../images/title.png) no-repeat top left transparent;
-	height:372px;
+	background:url(img/title.png	) no-repeat top left transparent;
+	height:550px;
 }
 
 #title p{
@@ -221,13 +244,13 @@ body{
 #sidebar .nav a{
 	color:#FFF;
 	text-decoration:none;
-	background:url(../images/star1.jpg) no-repeat center left;
+	background:url(img/star1.jpg) no-repeat center left;
 	padding:0 0 0 30px;
 }
 
 #sidebar .nav a:hover{
 	color:#FFF000;
-	background:url(../images/star2.jpg) no-repeat center left;
+	background:url(img/star2.jpg) no-repeat center left;
 }
 
 #gallery{
@@ -277,10 +300,10 @@ body{
 
 #footer{
 	color:#FFF;
-	height:288px;
+	height:200px;
 	padding:20px 0 25px 0;
 	margin-right:-40px;
-	background:url(../images/footer.gif) no-repeat bottom right transparent;
+	background:url(img/footer.gif) no-repeat bottom right transparent;
 	text-align:left;
 }
 
@@ -325,21 +348,16 @@ body{
 	text-decoration:none;
 	letter-spacing:1px;
 	background-color:#0F0F0F;
-	border-top:1px solid #555;
-	border-bottom:1px solid #555;
+	border-top:0px solid #555;
+	border-bottom:0px solid #555;
+		
 }
 
 #footer li a:hover{
 	background-color:#252525;
-	color:#ED145A;
+	color:#FFFFF;
 }
 
 #footer .rf_item{
 	padding:0 6px;
-}
-
-.txtarea{margin-top:50px;}
-
-#search_form 
-{ text-align:center;
 }

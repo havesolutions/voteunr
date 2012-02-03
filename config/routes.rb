@@ -5,6 +5,9 @@ Bookstore::Application.routes.draw do
       get 'auto_complete_search'
 			get 'search'
     end
+		member do 
+			get 'find_user_address'
+		end
   end
 
 
