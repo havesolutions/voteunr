@@ -5,5 +5,7 @@
 
 #people_search
   = form_tag search_votes_path, :method => :get, :id => 'search_form' do
-    = text_field_tag :search, params[:search], :size => 40, :placeholder => "Enter search term..."
-    %button#submit_search{:style => "font-size: 12px;"} Search
+    %p
+      = text_field_tag :search, params[:search], :size => 40, :placeholder => "Enter search term..."
+    %p
+      %button#submit_search{:style => "font-size: 12px;"} Search

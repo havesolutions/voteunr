@@ -76,3 +76,21 @@ body{
  	color:#FFFAF0;
 }
 
+#left{
+	width:200px;
+	min-height:575px;
+	margin:auto;
+	font:12px Arial, Helvetica, sans-serif;
+	float:left;
+	text-align:center;
+}
+
+#right{
+	width:200px;
+	min-height:575px;
+	margin:auto;
+	font:12px Arial, Helvetica, sans-serif;
+	float:right;
+	text-align:center;
+}
+
