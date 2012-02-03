@@ -7,7 +7,7 @@
   %table{:border => 2, :align => "center", :bordercolor => "#FFF096", :width => "500", :height => "200",:style=> "overflow:fixed;"}
     %tr
       - Vote::ColumnNames.each do |column|
-        %th{:style => "color:#FF0000"}=column
+        %th{:style => "color:#FF383E"}=column
     - @records.each do |record|
       %tr
         %td{:align => "center",:style => "color:#FFFAF0"}= h record.panel_no.present? ? record.panel_no : '-'
