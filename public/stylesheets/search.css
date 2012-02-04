@@ -7,11 +7,15 @@ body{
 
 #search_form 
 { text-align:center;
+margin-left:112px;
 }
 
 .people_search {
 /*	margin-top:40px;*/
-margin-bottom:105px;
+margin-bottom:35px;
+width:850px;
+float:right;
+position:static;
 }
 
 #flash_notice, #flash_error, #flash_alert {
@@ -61,7 +65,7 @@ margin-bottom:105px;
   margin: 0;
 }
 
-#search_table table tbody tr td a {
+table#search_table tbody tr td a.people_sr_no {
 	color:#FFFAF0;
 }
 

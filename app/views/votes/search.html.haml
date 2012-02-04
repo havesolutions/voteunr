@@ -1,6 +1,12 @@
-= render :partial => 'form'
 .people_search
-  %table{:border => 2, :align => "center", :bordercolor => "#FFF096", :width => "700", :height => "200",:style=> "overflow:fixed;"}
+  = form_tag search_votes_path, :method => :get, :id => 'search_form' do 
+    %table{:id => "search_form_table", :style=> "float:center;"}
+      %tr
+        %td
+          = link_to image_tag("shome.png", :border=>0), "http://voteulhasnagar.com", :id => "search_button"
+          = text_field_tag :search, params[:search], :size => 40, :placeholder => "Enter search term..."
+          %button#submit_search{:style => "font-size: 12px;"} Search
+  %table{:border => 2, :align => "center", :bordercolor => "#FFF096", :width => "700", :height => "200",:style=> "overflow:fixed;", :id => "search_table"}
     %tr
       - Vote::ColumnNames.each do |column|
         %th{:style => "color:#FF383E"}=column
@@ -16,7 +22,5 @@
         %td{:align => "center",:style => "color:#FFFAF0"}= h record.age.present? ? record.age : '-'
   %br/
   %div{:align => 'center'}= paginate @records
-%br/
-
-
-#people_info
+  %br
+  .search_table#people_info
