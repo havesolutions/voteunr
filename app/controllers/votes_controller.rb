@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
-
+	before_filter :update_session_time, :only => :search
+	before_filter :session_expires, :only => :search
 	layout false, :only => [:new, :search]
 
 	def index
@@ -35,13 +36,22 @@ class VotesController < ApplicationController
 		end
 	end
 
-#  def auto_complete_search
-#    begin
-#      @items = Vote.complete_for(params[:search])
-#    rescue ScopedSearch::QueryNotSupported => e
-#      @items = [{:error =>e.to_s}]
-#    end
-#    render :json => @items
-#  end
+	private
+
+	def session_expires
+		@time_left = (session[:"#{request.remote_addr}"] - Time.now).to_i
+		logger.info "@time_left =======#{@time_left.inspect}================"
+		unless @time_left > 0
+#		  reset_session
+		  flash[:alert] = 'Your time on this page is exceeded to a maximum limit, please visit this site tomorrow'
+		  redirect_to "http://voteulhasnagar.com/"
+		end
+	end
+
+	def update_session_time
+		if session[:"#{request.remote_addr}"].blank?
+			session[:"#{request.remote_addr}"] = 60.minutes.from_now
+		end
+	end
 
 end
