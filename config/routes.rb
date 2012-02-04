@@ -7,6 +7,7 @@ Bookstore::Application.routes.draw do
     end
 		member do 
 			get 'find_user_address'
+			put 'update_mobile_no'
 		end
   end
 

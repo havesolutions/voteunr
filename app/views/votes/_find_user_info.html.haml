@@ -1,5 +1,5 @@
 #address
-  = form_tag(nil, :method=>'post', :multipart => true) do
+  = form_tag(update_mobile_no_vote_path(@user.id), :method=>'put', :id => "update_mob_form") do
     %p{:style => "color:#FF0000"}
       Booth Address:
       %br/
@@ -8,6 +8,7 @@
       Mobile No:
       %br/
       = text_field_tag :mob_no, @user.mobile_num, :size => 10
+      = link_to_function image_tag("supdate.png", :border=>0), "updateMobileNo($(this))", :id => "update_button", :sr_no => @user.sr_no
     - if false
       %p
         = submit_tag 'Update mobile No'

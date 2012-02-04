@@ -26,6 +26,15 @@ class VotesController < ApplicationController
 		end
 	end
 
+	def update_mobile_no
+		record = Vote.find(params[:id]) if params[:id]
+		if params[:mob_no].present? && record.update_attribute(:mobile_num, params[:mob_no])
+			render :text => "success" 
+		else
+			render :text => "failed"
+		end
+	end
+
 #  def auto_complete_search
 #    begin
 #      @items = Vote.complete_for(params[:search])
