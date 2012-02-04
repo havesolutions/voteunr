@@ -7,7 +7,14 @@
     - flash.each do |name, msg|
       = content_tag :div, msg, :id => "flash_#{name}"
     = content_tag :h1, yield(:title) if show_title?
-    #left
-      = image_tag("help.png", :border=>0)
-    = yield
+    %table
+      %tr
+        %td
+          #left
+            = image_tag("help.png")
+        %td
+          = yield
+        %td
+          #right
+            = image_tag("main.png")
 

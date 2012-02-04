@@ -1,9 +1,6 @@
-#home_button{:style => "text-align:right;"}
-  = link_to image_tag("shome.png", :border=>0), "http://voteulhasnagar.com", :id => "search_button"
-
 = render :partial => 'form'
-#search_table
-  %table{:border => 2, :align => "center", :bordercolor => "#FFF096", :width => "500", :height => "200",:style=> "overflow:fixed;"}
+.people_search
+  %table{:border => 2, :align => "center", :bordercolor => "#FFF096", :width => "700", :height => "200",:style=> "overflow:fixed;"}
     %tr
       - Vote::ColumnNames.each do |column|
         %th{:style => "color:#FF383E"}=column
@@ -17,7 +14,8 @@
         %td{:align => "center",:style => "color:#FFFAF0"}= h record.voters_id.present? ? record.voters_id : '-'
         %td{:align => "center",:style => "color:#FFFAF0"}= h record.sex.present? ? record.sex : '-'
         %td{:align => "center",:style => "color:#FFFAF0"}= h record.age.present? ? record.age : '-'
-= paginate @records
+  %br/
+  %div{:align => 'center'}= paginate @records
 %br/
 
 

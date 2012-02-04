@@ -17,10 +17,10 @@ body{
 	text-align:center;
 }
 
-#container{
+#search_table
 	background:url(img/full.jpg) repeat-y top left #000;
 	width:720px;
-	min-height:575px;
+	min-height:312px;
 	margin:auto;
 	font:12px Arial, Helvetica, sans-serif;
 }
