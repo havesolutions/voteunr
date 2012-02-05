@@ -22,8 +22,7 @@ class VotesController < ApplicationController
 
 	def find_user_address
 		if params[:id].present?
-			@user = Vote.find_by_sr_no(params[:id])
-			logger.info "#{@user.inspect}kkkkkkkkkkkkkkkkkkkkkk\n\n"
+			@user = Vote.find(params[:id])
 			render :partial => "find_user_info"
 		end
 	end

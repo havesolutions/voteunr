@@ -10,4 +10,4 @@
         %td
           = link_to image_tag("shome.png", :border=>0), "http://voteulhasnagar.com", :id => "search_button"
           = text_field_tag :search, params[:search], :size => 40, :placeholder => "Enter search term..."
-          %button#submit_search{:style => "font-size: 12px;"} Search
+          = image_submit_tag("ssearch.png", :class => 'search_button')

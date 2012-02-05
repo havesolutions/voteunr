@@ -5,7 +5,7 @@
         %td
           = link_to image_tag("shome.png", :border=>0), "http://voteulhasnagar.com", :id => "search_button"
           = text_field_tag :search, params[:search], :size => 40, :placeholder => "Enter search term..."
-          %button#submit_search{:style => "font-size: 12px;"} Search
+          = image_submit_tag("ssearch.png", :class => 'search_button', :style => 'margin-top:10px;')
   %table{:border => 2, :align => "center", :bordercolor => "#FFF096", :width => "700", :height => "200",:style=> "overflow:fixed;", :id => "search_table"}
     %tr
       - Vote::ColumnNames.each do |column|
@@ -13,7 +13,7 @@
     - @records.each do |record|
       %tr
         %td{:align => "center",:style => "color:#FFFAF0"}= h record.panel_no.present? ? record.panel_no : '-'
-        %td{:align => "center",:style => "color:#FFFAF0"}= h record.sr_no.present? ? (link_to_function record.sr_no, "findAddress($(this))", :class => "people_sr_no") : '-'
+        %td{:align => "center",:style => "color:#FFFAF0"}= h record.sr_no.present? ? (link_to_function record.sr_no, "findAddress($(this))", :class => "people_sr_no", :id => record.id) : '-'
         %td{:align => "center",:style => "color:#FFFAF0"}= h record.name.present? ? record.name : '-'
         %td{:align => "center",:style => "color:#FFFAF0"}= h record.middle_name.present? ? record.middle_name : '-'
         %td{:align => "center",:style => "color:#FFFAF0"}= h record.last_name.present? ? record.last_name : '-'
@@ -22,5 +22,7 @@
         %td{:align => "center",:style => "color:#FFFAF0"}= h record.age.present? ? record.age : '-'
   %br/
   %div{:align => 'center'}= paginate @records
+  %br/
+  %div{:align => 'center'}= image_tag("myvote.png", :border=>0)
   %br
-  .search_table#people_info
+  .search_table#people_info{:align => 'center'}
