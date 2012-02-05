@@ -5,7 +5,7 @@
       %br/
       = text_field_tag("address", @user.address_line_1 ,:size => 55,:class => 'addres_txt-area')
     %p{:style => "color:#FF0000"}
-      Mobile No:
+      Mobile No: &nbsp;&nbsp;&nbsp;
       %br/
       = text_field_tag :mob_no, @user.mobile_num, :size => 10
       = link_to_function image_tag("supdate.png", :border=>0), "updateMobileNo($(this))", :id => "update_button", :sr_no => @user.sr_no

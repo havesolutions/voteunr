@@ -1,0 +1,4 @@
+page.replace_html "user_error_messages", "<div id='errorExplanation' class='errorExplanation'><h3 class='err_h2'>#{pluralize(@new_record.uniq.size, 'error')
+} prohibited these properties from being saved</h3><ul>#{@validation_errors}</ul></div>"
+page << "$('#user_error_messages').scrollTo(500);"
+

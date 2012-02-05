@@ -20,6 +20,7 @@
         %td{:align => "center",:style => "color:#FFFAF0"}= h record.voters_id.present? ? record.voters_id : '-'
         %td{:align => "center",:style => "color:#FFFAF0"}= h record.sex.present? ? record.sex : '-'
         %td{:align => "center",:style => "color:#FFFAF0"}= h record.age.present? ? record.age : '-'
+        %td{:align => "center",:style => "color:#FFFAF0"}= h link_to('edit', vote_path(record.id, :keyword => params[:search]), :rel => "facebox#{record.id}", :class => 'f_edit')
   %br/
   %div{:align => 'center'}= paginate @records
   %br/

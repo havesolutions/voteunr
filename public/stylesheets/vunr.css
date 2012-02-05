@@ -1,0 +1,453 @@
+#gb {
+    font: 13px/27px Arial,sans-serif;
+    height: 30px;
+}
+#gbz, #gbg {
+    height: 30px;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    z-index: 1000;
+}
+#gbz {
+    left: 0;
+    padding-left: 4px;
+}
+#gbg {
+    padding-right: 5px;
+    right: 0;
+}
+#gbs {
+    background: none repeat scroll 0 0 transparent;
+    position: absolute;
+    top: -999px;
+    visibility: hidden;
+    z-index: 998;
+}
+.gbto #gbs {
+}
+#gbx3, #gbx4 {
+    background-color: #2D2D2D;
+    background-image: none;
+    background-position: 0 -138px;
+    background-repeat: repeat-x;
+    border-bottom: 1px solid #000000;
+    font-size: 24px;
+    height: 29px;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 990;
+}
+#gbx3 {
+    left: 0;
+}
+#gbx4 {
+    right: 0;
+}
+#gbb {
+    position: relative;
+}
+#gbbw {
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    width: 100%;
+}
+.gbtcb {
+    position: absolute;
+    visibility: hidden;
+}
+#gbz .gbtcb {
+    right: 0;
+}
+#gbg .gbtcb {
+    left: 0;
+}
+.gbxx {
+    display: none !important;
+}
+.gbm {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #BEBEBE;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    text-align: left;
+    top: -999px;
+    visibility: hidden;
+    z-index: 999;
+}
+.gbrtl .gbm {
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+.gbto .gbm, .gbto #gbs {
+    top: 29px;
+    visibility: visible;
+}
+#gbz .gbm, #gbz #gbs {
+    left: 0;
+}
+#gbg .gbm, #gbg #gbs {
+    right: 0;
+}
+.gbxms {
+    background-color: #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    bottom: -2px;
+    display: block;
+    left: -2px;
+    opacity: 0.4;
+    position: absolute;
+    right: -2px;
+    top: -1px;
+    z-index: 1;
+}
+.gbma {
+    border-color: #C0C0C0 transparent transparent;
+    border-right: 3px dashed transparent;
+    border-style: solid dashed dashed;
+    border-width: 3px 3px 0;
+    display: inline-block;
+    font-size: 0;
+    height: 0;
+    left: 4px;
+    line-height: 0;
+    padding-top: 1px;
+    position: relative;
+    top: -1px;
+    width: 0;
+}
+#gbztms1, #gbi4m1, #gbi4s, #gbi4t {
+}
+.gbtc, .gbmc, .gbmcc {
+    display: block;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.gbmc {
+    background: none repeat scroll 0 0 #FFFFFF;
+    padding: 10px 0;
+    position: relative;
+    z-index: 2;
+}
+.gbt {
+    display: inline-block;
+    line-height: 27px;
+    padding: 0;
+    position: relative;
+    vertical-align: top;
+}
+.gbt {
+}
+.gbto {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.gbzt, .gbgt {
+    cursor: pointer;
+    display: block;
+    text-decoration: none !important;
+}
+.gbts {
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    display: block;
+    padding: 0 5px;
+    position: relative;
+    z-index: 1000;
+}
+.gbts {
+}
+.gbto .gbts {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #BEBEBE;
+    color: #3366CC;
+    padding-bottom: 1px;
+    padding-top: 2px;
+}
+.gbz0l .gbts {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.gbtsa {
+    padding-right: 9px;
+}
+#gbz .gbzt, #gbz .gbgt, #gbg .gbgt {
+    color: #CCCCCC !important;
+}
+.gbtb2 {
+    border-top: 2px solid transparent;
+    display: block;
+}
+.gbto .gbzt .gbtb2, .gbto .gbgt .gbtb2 {
+    border-top-width: 0;
+}
+.gbtb .gbts {
+    background: url("//ssl.gstatic.com/gb/images/b_8d5afc09.png") repeat scroll -27px -22px transparent;
+    border: 0 none;
+    font-size: 0;
+    padding: 29px 0 0;
+    width: 1px;
+}
+.gbzt-hvr, .gbzt:focus, .gbgt-hvr, .gbgt:focus {
+    background-color: #4C4C4C;
+    background-image: none;
+    background-position: 0 -102px;
+    background-repeat: repeat-x;
+    outline: medium none;
+    text-decoration: none !important;
+}
+.gbpdjs .gbto .gbm {
+    min-width: 99%;
+}
+.gbz0l .gbtb2 {
+    border-top-color: #DD4B39 !important;
+}
+#gbi4s, #gbi4s1 {
+    font-weight: bold;
+}
+#gbg6.gbgt-hvr, #gbg6.gbgt:focus {
+    background-color: transparent;
+    background-image: none;
+}
+.gbg4a {
+    font-size: 0;
+    line-height: 0;
+}
+.gbg4a .gbts {
+    padding: 27px 5px 0;
+}
+.gbto .gbg4a .gbts {
+    padding: 29px 5px 1px;
+}
+#gbi4i, #gbi4id {
+    border: 0 none;
+    height: 24px;
+    left: 5px;
+    position: absolute;
+    top: 1px;
+    width: 24px;
+}
+.gbto #gbi4i, .gbto #gbi4id {
+    top: 3px;
+}
+.gbi4p {
+    display: block;
+    width: 24px;
+}
+#gbi4id, #gbmpid {
+    background: url("//ssl.gstatic.com/gb/images/b_8d5afc09.png") repeat scroll 0 0 transparent;
+}
+#gbi4id {
+    background-position: -29px -54px;
+}
+#gbmpid {
+    background-position: -58px 0;
+}
+#gbmpi, #gbmpid {
+    border: medium none;
+    display: inline-block;
+    height: 48px;
+    margin: 10px 20px;
+    width: 48px;
+}
+#gbmpi, #gbmpid {
+}
+#gbg5 {
+    font-size: 0;
+}
+#gbgs5 {
+    padding: 5px !important;
+}
+.gbto #gbgs5 {
+    padding: 7px 5px 6px !important;
+}
+#gbi5 {
+    background: url("//ssl.gstatic.com/gb/images/b_8d5afc09.png") repeat scroll 0 0 transparent;
+    display: block;
+    font-size: 0;
+    height: 17px;
+    width: 16px;
+}
+.gbto #gbi5 {
+    background-position: -6px -22px;
+}
+.gbn .gbmt, .gbn .gbmt:visited, .gbnd .gbmt, .gbnd .gbmt:visited {
+    color: #DD8E27 !important;
+}
+.gbf .gbmt, .gbf .gbmt:visited {
+    color: #990000 !important;
+}
+.gbmt, .gbml1, .gbmt:visited, .gbml1:visited {
+    color: #3366CC !important;
+    text-decoration: none !important;
+}
+.gbmt, .gbmt:visited {
+    display: block;
+}
+.gbml1, .gbml1:visited {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 0 10px;
+}
+.gbml1 {
+}
+.gbml1-hvr, .gbml1:focus {
+    background: none repeat scroll 0 0 #EFF3FB;
+    outline: medium none;
+}
+#gbpm .gbml1 {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+#gbpm .gbml1-hvr, #gbpm .gbml1:focus {
+    background: none repeat scroll 0 0 transparent;
+    text-decoration: underline !important;
+}
+.gbmt {
+    padding: 0 20px;
+}
+.gbmt-hvr, .gbmt:focus {
+    background: none repeat scroll 0 0 #EFF3FB;
+    cursor: pointer;
+    outline: 0 solid black;
+    text-decoration: none !important;
+}
+.gbm0l, .gbm0l:visited {
+    color: #000000 !important;
+    font-weight: bold;
+}
+.gbmh {
+    border-top: 1px solid #E5E5E5;
+    font-size: 0;
+    margin: 10px 0;
+}
+#gbd4 .gbmh {
+    margin: 0;
+}
+.gbmtc {
+    line-height: 27px;
+    margin: 0;
+    padding: 0;
+}
+.GBMCC:last-child:after, #GBMPAL:last-child:after {
+    content: "\A \A ";
+    position: absolute;
+    white-space: pre;
+}
+#gbd4 .gbpc, #gbmpas .gbmt {
+    line-height: 17px;
+}
+#gbd4 .gbpgs .gbmtc {
+    line-height: 27px;
+}
+#gbmpas .gbmt {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+#gbmple .gbmt, #gbmpas .gbmt {
+    font-size: 15px;
+}
+#gbd4 .gbpc {
+    display: inline-block;
+    margin: 6px 50px 10px 0;
+    vertical-align: top;
+}
+#gbd4 .gbpc {
+}
+.gbpc .gbps, .gbpc .gbps2 {
+    display: block;
+    margin: 0 20px;
+}
+#gbmplp.gbps {
+    margin: 0 10px;
+}
+.gbpc .gbps {
+    color: #000000;
+    font-weight: bold;
+}
+.gbpc .gbps2 {
+    font-size: 13px;
+}
+.gbpc .gbpd {
+    margin-bottom: 5px;
+}
+.gbpd .gbmt, .gbmpmtd .gbmt {
+    color: #666666 !important;
+}
+.gbmpme, .gbps2 {
+    color: #666666;
+    display: block;
+    font-size: 11px;
+}
+.gbp0 .gbps2, .gbmpmta .gbmpme {
+    font-weight: bold;
+}
+#gbmpp {
+    display: none;
+}
+#gbd4 .gbmcc {
+    margin-top: 5px;
+}
+.gbpmc {
+    background: none repeat scroll 0 0 #EDFEEA;
+}
+.gbpmc .gbmt {
+    padding: 10px 20px;
+}
+#gbpm {
+    border-spacing: 0;
+    margin: 0;
+    white-space: normal;
+}
+#gbpm .gbmt {
+    border-top: medium none;
+    color: #666666 !important;
+    font: 11px Arial,sans-serif;
+}
+#gbpms {
+}
+.gbpms2 {
+    font-weight: bold;
+    white-space: nowrap;
+}
+#gbmpal {
+    border-spacing: 0;
+    margin: 0;
+    white-space: nowrap;
+}
+.gbmpala, .gbmpalb {
+    font: 13px/27px Arial,sans-serif;
+    padding: 10px 20px 0;
+    white-space: nowrap;
+}
+.gbmpala {
+    padding-left: 0;
+    text-align: left;
+}
+.gbmpalb {
+    padding-right: 0;
+    text-align: right;
+}
+.gbp0 .gbps, .gbmpmta .gbmpmn {
+    color: #000000;
+    display: inline-block;
+    font-weight: bold;
+    padding-right: 34px;
+    position: relative;
+}
+.gbp0 .gbps, .gbmpmta .gbmpmn {
+}
+.gbmpmtc, .gbp0i {
+    background: url("//ssl.gstatic.com/gb/images/b_8d5afc09.png") repeat scroll 0 -54px transparent;
+    height: 21px;
+    position: absolute;
+    right: 0;
+    top: -3px;
+    width: 24px;
+}
+

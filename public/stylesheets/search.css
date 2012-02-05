@@ -99,3 +99,14 @@ table#search_table tbody tr td a.people_sr_no {
 	text-align:center;
 }
 
+#show_form{
+	text-align:center;
+}
+
+.f_edit{
+	color:#FFFAF0;
+}
+
+#errorExplanation{
+ color:#FF383E;
+}

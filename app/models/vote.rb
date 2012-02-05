@@ -1,11 +1,7 @@
 class Vote < ActiveRecord::Base
 	paginates_per 10
-  attr_accessible :name, :last_name, :middle_name, :voters_id, :age, :sex, :panel_no
 
-#  scoped_search :on => :name, :complete_value => :true, :default_order => true
-#  scoped_search :on => :description, :complete_value => :false
-#  scoped_search :in => :author, :on => :last_name, :complete_value => true, :rename => :"author.last"
-#  scoped_search :in => :author, :on => :first_name, :complete_value => true, :rename => :"author.first"
+  attr_accessible :name, :last_name, :middle_name, :voters_id, :age, :sex, :panel_no
 
 	ColumnNames = ["Panel", "Sr No", "First Name", "Middle Name", "Last Name", "Voters Id", "Sex", "Age"]
 

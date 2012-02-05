@@ -5,9 +5,13 @@
 
 .people_search
   = form_tag search_votes_path, :method => :get, :id => 'search_form' do 
-    %table
+    %table{:align=>'left'}
       %tr
         %td
-          = link_to image_tag("shome.png", :border=>0), "http://voteulhasnagar.com", :id => "search_button"
-          = text_field_tag :search, params[:search], :size => 40, :placeholder => "Enter search term..."
-          = image_submit_tag("ssearch.png", :class => 'search_button')
+          = link_to image_tag("shome.png", :border=>0), "http://voteulhasnagar.com", :id => "shome_button"          
+          = text_field_tag :search, params[:search], :size => 40, :placeholder => "Enter search term..."          
+          = image_submit_tag("ssearch.png", :class => 'search_button')      
+      - if session[:no_record].present?
+        %tr
+          %td{:align => "center"}
+            = link_to image_tag("new.png", :border=>0), new_updated_vote_path , :id => "shome_button", :rel => 'facebox'

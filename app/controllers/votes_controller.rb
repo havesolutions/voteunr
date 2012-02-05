@@ -10,13 +10,20 @@ class VotesController < ApplicationController
 	def new		
 	  render :layout => "search"
 	end
+	
+	def show
+		@keyword = params[:keyword]
+		@record = Vote.find(params[:id]) if params[:id]
+	end
 
 	def search
 		@records = Vote.search_for(params[:search], :order => 'panel_no').page params[:page]
-		if @records.blank?
-			flash.now[:notice] = "Sorry, couldn't find any record with your keyword, please try other combination of keywords"
+		if @records.blank?		
+			session[:no_record] = "true"	
+			flash.now[:notice] = "Sorry, couldn't find any record with your input keyword, please try other combination of keywords or use  help me finding my vote button to find your vote"
 			render :action => :new, :layout => "search"
 		else
+			session[:no_record] = nil
 			render :layout => "search"
 		end
   rescue => e
@@ -47,7 +54,7 @@ class VotesController < ApplicationController
 		@time_left = (session[:"#{request.remote_addr}"] - Time.now).to_i
 		logger.info "@time_left =======#{@time_left.inspect}================"
 		unless @time_left > 0
-#		  reset_session
+		  reset_session
 		  flash[:alert] = 'Your time on this page is exceeded to a maximum limit, please visit this site tomorrow'
 		  redirect_to "http://voteulhasnagar.com/"
 		end

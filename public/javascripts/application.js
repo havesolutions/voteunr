@@ -1,5 +1,13 @@
+//  $.facebox.setings.closeImage = '../images/loading.gif'
+//  $.facebox.settings.loadingImage = '../images/closelabel.png'
+
 $(function() {
- // Handler for .ready() called.
+	$('a[rel*=facebox]').facebox();
+//	alert('hi');
+//  $('#facebox_update').bind('click', function(event) {
+//    //event.preventDefault();
+//		//alert('hi');
+//  });
 
 });
 

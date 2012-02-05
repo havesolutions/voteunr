@@ -11,6 +11,12 @@ Bookstore::Application.routes.draw do
 		end
   end
 
+	resources :updated_votes do
+		collection do
+			post 'update_user_data'
+		end
+	end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
