@@ -13,7 +13,12 @@ class VotesController < ApplicationController
 
 	def search
 		@records = Vote.search_for(params[:search], :order => 'panel_no').page params[:page]
-		render :layout => "search"
+		if @records.blank?
+			flash.now[:notice] = "Sorry, couldn't find any record with your keyword, please try other combination of keywords"
+			render :action => :new, :layout => "search"
+		else
+			render :layout => "search"
+		end
   rescue => e
     #flash[:error] = e.to_s
     @records= Vote.search_for('', :order => 'panel_no').page params[:page]
