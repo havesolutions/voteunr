@@ -1,7 +1,7 @@
 = form_for UpdatedVote.new, :html => {:id => 'show_form'} do |f|
   - if @new_record
     = render "shared/error_messages", :target => @new_record
-  %table{:border => 2, :align => "center", :bordercolor => "#FFFF00", :width => "700", :height => "200",:style=> "overflow:fixed;", :id => "search_table"}
+  %table{:border => 2, :align => "center", :bordercolor => "#FFF096", :width => "700", :height => "200",:style=> "overflow:fixed;", :id => "search_table"}
     %tr
       %td{:style => "color:#FF0000"}
         First Name:(*)
@@ -19,12 +19,12 @@
         =text_field_tag "new_vote[last_name]",'', :size => 20
     %tr
       %td{:style => "color:#FF0000"}
-        Sex:
+        Sex:(*)
       %td
         = text_field_tag "new_vote[sex]",'', :size => 1
     %tr
       %td{:style => "color:#FF0000"}
-        Mailing Address:(*)
+        Mailing Address:
       %td
         = text_field_tag "new_vote[address_line_1]",'', :size => 65
         = text_field_tag "new_vote[address_line_2]",'', :size => 65
@@ -45,7 +45,7 @@
         = text_field_tag "new_vote[pin_code]",'', :size => 20
     %tr
       %td{:style => "color:#FF0000"}
-        Date of Birth:
+        Date of Birth:(*)
       %td
         = text_field "new_vote[date_of_birth]",'', :size => 20
     %tr
